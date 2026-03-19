@@ -10,5 +10,20 @@ void MyTcpClient::sendMessage(QString msg)
         return;
     }
     msocket->write(msg.toUtf8());
-    msocket->flush();
+    msocket->waitForReadyRead();
+    QString res = "";
+    while(msocket->bytesAvailable() > 0)
+    {
+        QByteArray array = msocket->readAll();
+        qDebug() << array << "\n";
+
+        if(array == "\x01")
+        {
+            res = "";
+        }
+        else
+        {
+            res.append(array);
+        }
+    }
 }
