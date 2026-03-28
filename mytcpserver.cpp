@@ -1,8 +1,9 @@
 #include "mytcpserver.h"
 #include <QDebug>
-
+#include "parsing.h"
 MyTcpServer::MyTcpServer(QObject *parent) : QObject(parent)
 {
+    myparsing = new CommandParsing(this);
     mTcpServer = new QTcpServer(this);
 
     connect(mTcpServer, &QTcpServer::newConnection,
@@ -59,25 +60,18 @@ void MyTcpServer::slotServerRead()
     QTcpSocket *mTcpSocket = qobject_cast<QTcpSocket*>(sender());
     if (!mTcpSocket) return;
 
-    QString res = "";
+    QString resp = "";
 
     while(mTcpSocket->bytesAvailable() > 0)
     {
         QByteArray array = mTcpSocket->readAll();
         qDebug() << array << "\n";
+        QString dataStr = QString::fromUtf8(array).trimmed();
+        resp = myparsing->Command(dataStr);
 
-        if(array == "\x01")
-        {
-            mTcpSocket->write(res.toUtf8());
-            res = "";
-        }
-        else
-        {
-            res.append(array);
-        }
     }
+    mTcpSocket->write(resp.toUtf8());
 
-    mTcpSocket->write(res.toUtf8());
 }
 
 void MyTcpServer::slotClientDisconnected()

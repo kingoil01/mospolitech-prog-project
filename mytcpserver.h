@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QMap>
 #include <QByteArray>
+#include "parsing.h"
 
 class MyTcpServer : public QObject
 {
@@ -20,6 +21,7 @@ public slots:
     void slotServerRead();
 
 private:
+    CommandParsing* myparsing;
     QTcpServer *mTcpServer;
     QMap<qintptr, QTcpSocket*> mSockets;       // socketDescriptor() -> socket
     QMap<qintptr, QByteArray> mBuffers;       // per-socket receive buffer
