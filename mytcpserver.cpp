@@ -26,7 +26,6 @@ MyTcpServer::~MyTcpServer()
         }
     }
     mSockets.clear();
-    mBuffers.clear();
 
     if (mTcpServer->isListening()) {
         mTcpServer->close();
@@ -41,7 +40,6 @@ void MyTcpServer::slotNewConnection()
 
         qintptr id = clientSocket->socketDescriptor();
         mSockets[id] = clientSocket;
-        mBuffers[id] = QByteArray();
 
         qDebug() << "New client connected, id =" << id
                  << ", peer =" << clientSocket->peerAddress().toString()
@@ -84,7 +82,6 @@ void MyTcpServer::slotClientDisconnected()
 
     // Remove from maps and schedule deletion
     mSockets.remove(id);
-    mBuffers.remove(id);
 
     socket->close();
     socket->deleteLater();
