@@ -14,8 +14,7 @@
 #include "parsing.h"
 
 ///
-/// \class MyTcpServer
-/// \brief Многоклиентский TCP-сервер на базе Qt, который принимает подключения клиенто на порту 33333
+/// \brief The MyTcpServer Class - Класс TCP-сервера на базе Qt, который принимает подключения клиента на порту 33333
 ///
 class MyTcpServer : public QObject
 {
@@ -24,30 +23,30 @@ class MyTcpServer : public QObject
 public:
 
     ///
-    /// \brief Конструктор запускает сервер на порту 33333 и подключает сокет
+    /// \brief Конструктор MyTcpServer запускает сервер на порту 33333 и подключает сокет
     /// \param parent Родительский объект Qt, по умолчанию nullptr
     ///
     explicit MyTcpServer(QObject *parent = nullptr);
 
     ///
-    /// \brief Деструктор — закрывает все сокеты из mSockets и останавливает сервер
+    /// \brief Деструктор ~MyTcpServer закрывает все сокеты из mSockets и останавливает сервер
     ///
     ~MyTcpServer();
 
 public slots:
 
     ///
-    /// \brief Принимает новое подключение и сохраняет сокет в mSockets
+    /// \brief slotNewConnection принимает новое подключение и сохраняет сокет в mSockets
     ///
     void slotNewConnection();
 
     ///
-    /// \brief Удаляет отключившийся сокет из mSockets
+    /// \brief slotClientDisconnected удаляет отключившийся сокет из mSockets
     ///
     void slotClientDisconnected();
 
     ///
-    /// \brief Читает данные из сокета и отправляет ответ от CommandParsing
+    /// \brief slotServerRead читает данные из сокета и отправляет ответ от CommandParsing
     ///
     void slotServerRead();
 
