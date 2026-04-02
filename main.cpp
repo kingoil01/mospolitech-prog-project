@@ -1,19 +1,15 @@
-#include <QCoreApplication>
-#include <QTimer>
+#include "managerform.h"
 #include "mytcpclient.h"
+
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
 
+    MyTcpClient* c = MyTcpClient::getInstance();
+    ManagerForm s;
 
-    MyTcpClient* User = MyTcpClient::getInstance();
-    QTimer::singleShot(1000, [User]() {
-        User->sendMessage("aboba");
-    });
-    QTimer::singleShot(1200, [User]() {
-        User->sendMessage("aboba2");
-    });
 
     return a.exec();
 }

@@ -40,6 +40,7 @@ public:
         return instance;
     }
     void sendMessage(QString);
+    QString getMsg();
 };
 
 #endif // MYTCPCLIENT_H
