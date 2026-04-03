@@ -3,6 +3,7 @@
 
 #include "authregform.h"
 #include "mainform.h"
+#include "test.h"
 #include <QObject>
 
 class ManagerForm: public QObject
@@ -11,8 +12,11 @@ class ManagerForm: public QObject
 private:
     authregform *w;
     MainForm *m;
+    TEST *t;
 public slots:
     void slot_auth();
+    void slot_exit();
+    void slot_test();
 public:
     static QString login;
     ManagerForm();

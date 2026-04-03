@@ -28,3 +28,15 @@ void MainForm::on_pushButton_clicked()
     showStat();
 }
 
+
+void MainForm::on_pushButton_2_clicked()
+{
+    emit exit_ok();
+}
+
+
+void MainForm::on_pushButton_3_clicked()
+{
+    emit test_ok();
+}
+

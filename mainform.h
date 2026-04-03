@@ -17,9 +17,15 @@ public:
     explicit MainForm(QWidget *parent = nullptr);
     ~MainForm();
     void showStat();
-
+signals:
+    void exit_ok();
+    void test_ok();
 private slots:
     void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
 
 private:
     ButtonHandler* handler;
