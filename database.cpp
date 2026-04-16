@@ -102,17 +102,6 @@ bool Database::authoUser(const QString& login, const QString& pass){
 }
 
 QString Database::stataUser(const QString& login){
-    QSqlQuery check;
-    check.exec("SELECT * FROM tasks");
-    qDebug() << "=== ВСЕ ЗАПИСИ В tasks ===";
-    while (check.next()) {
-        qDebug() << "user_id:" << check.value("user_id").toInt()
-        << "login:" << check.value("login").toString()
-        << "task1:" << check.value("task1").toInt()
-        << "task2:" << check.value("task2").toInt()
-        << "task3:" << check.value("task3").toInt()
-        << "task4:" << check.value("task4").toInt();
-    }
     QSqlQuery query;
     query.prepare("select * from tasks "
                   "where login = :login");
@@ -149,14 +138,4 @@ bool Database::createUserTasks(const int& user_id, const QString& login, const i
         return false;
     }
     return true;
-}
-void Database::read_test(){
-    QSqlQuery query;
-    query.exec("SELECT * FROM users");
-    qDebug() << "Список пользователей:";
-    while (query.next()) {
-        qDebug() << "ID:" << query.value("id").toInt()
-        << "Login:" << query.value("login").toString()
-        << "Pass:" << query.value("password").toString();
-    }
 }

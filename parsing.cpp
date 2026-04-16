@@ -32,6 +32,10 @@ QString CommandParsing::Command(const QString &dataStr){
         res = Rebra();
     }
     else if (command == "auth"){
+        if (parts.size()<3){
+            res = "Данные введены не полностью";
+        }
+        else {
         QString Login = parts[1];
         QString Pass = parts[2];
         bool true_or_false = my_database->authoUser(Login, Pass);
@@ -39,8 +43,13 @@ QString CommandParsing::Command(const QString &dataStr){
             res = "Авторизация выполнена успешно";
         }
         else res = "Авторизация не удалась";
+        }
     }
     else if (command == "reg"){
+        if (parts.size()<4){
+            res = "Данные введены не полностью";
+        }
+        else {
         QString Login = parts[1];
         QString Pass = parts[2];
         QString Email = parts[3];
@@ -49,6 +58,7 @@ QString CommandParsing::Command(const QString &dataStr){
             res = "Регистрация выполнена успешно";
         }
         else res = "Регистрация не удалась";
+        }
     }
 
     else if (command == "stata"){
@@ -67,6 +77,9 @@ QString CommandParsing::Command(const QString &dataStr){
             res = "Данные заполнены";
         }
         else res = "Данные не заполнены";
+    }
+    else if (command == "zadacha"){
+        res = "Задача подгружается с сервера, сколько будет 2 + 2";
     }
     return res;
 }
