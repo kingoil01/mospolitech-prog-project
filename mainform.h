@@ -21,11 +21,11 @@ signals:
     void exit_ok();
     void test_ok();
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_clicked();//показать статистику
 
-    void on_pushButton_2_clicked();
+    void on_pushButton_2_clicked();//выход из окна
 
-    void on_pushButton_3_clicked();
+    void on_pushButton_3_clicked();//старт теста
 
 private:
     ButtonHandler* handler;

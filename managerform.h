@@ -14,12 +14,15 @@ private:
     MainForm *m;
     TEST *t;
 public slots:
-    void slot_auth();
-    void slot_exit();
-    void slot_test();
+    void slot_auth();//авторизация подтверждена
+    void slot_exit();//выход из окна mainform
+    void slot_test();//старт теста
+    void slot_exit_test();//завершение теста
 public:
     static QString login;
     ManagerForm();
+
+    //установить и получить логин авторизированного пользователя
     static void setLogin(QString log){
         login = log;
     }

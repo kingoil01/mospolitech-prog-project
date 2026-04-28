@@ -8,7 +8,7 @@ ManagerForm::ManagerForm() {
     w->show();
 }
 
-void ManagerForm::slot_auth()
+void ManagerForm::slot_auth()//слот для авторизации
 {
     if (w) {
         w->hide();
@@ -19,7 +19,7 @@ void ManagerForm::slot_auth()
     m->show();
 }
 
-void ManagerForm::slot_exit()
+void ManagerForm::slot_exit()//слот для выхода из окна mainform
 {
     if (m) {
         m->hide();
@@ -27,11 +27,21 @@ void ManagerForm::slot_exit()
     w->show();
 }
 
-void ManagerForm::slot_test(){
+void ManagerForm::slot_exit_test(){//слот для завершения теста
+    if (t){
+        t->hide();
+    }
+    m->show();
+}
+
+void ManagerForm::slot_test(){//слот для старта теста
     if (m) {
         m->hide();
     }
     t = new TEST();
+    connect(t, &TEST::exit_test, this, &ManagerForm::slot_exit_test);
     t->show();
 }
+
+
 

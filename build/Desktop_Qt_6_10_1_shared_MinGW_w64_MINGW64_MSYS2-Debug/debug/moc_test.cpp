@@ -38,10 +38,26 @@ template <> constexpr inline auto TEST::qt_create_metaobjectdata<qt_meta_tag_ZN4
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "TEST"
+        "TEST",
+        "exit_test",
+        "",
+        "on_pushButton_clicked",
+        "on_pushButton_2_clicked",
+        "on_pushButton_3_clicked",
+        "on_pushButton_4_clicked"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Signal 'exit_test'
+        QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'on_pushButton_clicked'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_pushButton_2_clicked'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_pushButton_3_clicked'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_pushButton_4_clicked'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -63,10 +79,20 @@ Q_CONSTINIT const QMetaObject TEST::staticMetaObject = { {
 void TEST::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<TEST *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
-    (void)_a;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->exit_test(); break;
+        case 1: _t->on_pushButton_clicked(); break;
+        case 2: _t->on_pushButton_2_clicked(); break;
+        case 3: _t->on_pushButton_3_clicked(); break;
+        case 4: _t->on_pushButton_4_clicked(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (TEST::*)()>(_a, &TEST::exit_test, 0))
+            return;
+    }
 }
 
 const QMetaObject *TEST::metaObject() const
@@ -85,6 +111,24 @@ void *TEST::qt_metacast(const char *_clname)
 int TEST::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 5)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 5;
+    }
     return _id;
+}
+
+// SIGNAL 0
+void TEST::exit_test()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP

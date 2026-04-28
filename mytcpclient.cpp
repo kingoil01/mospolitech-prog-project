@@ -3,7 +3,7 @@
 MyTcpClient* MyTcpClient::instance = nullptr;
 MyTcpClientDestroyer MyTcpClient::destroyer;
 
-void MyTcpClient::sendMessage(QString msg)
+void MyTcpClient::sendMessage(QString msg)//отправить сообщение серверу
 {
     if (!msocket || msocket->state() != QAbstractSocket::ConnectedState){
         qDebug() << "not connected to the server" << "\n";
@@ -12,7 +12,7 @@ void MyTcpClient::sendMessage(QString msg)
     msocket->write(msg.toUtf8());
 }
 
-QString MyTcpClient::getMsg(){
+QString MyTcpClient::getMsg(){//получить сообщение от сервера
     msocket->waitForReadyRead();
     QString res = "";
     while(msocket->bytesAvailable() > 0)

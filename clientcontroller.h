@@ -39,7 +39,7 @@ public:
 
     QString makeLoginCommand(QString& login, QString& password);
     QString makeRegisterCommand(QString& login, QString& password, QString& email);
-
+    QString makeTaskCommand();
 
     QString makeStatCommand();
 

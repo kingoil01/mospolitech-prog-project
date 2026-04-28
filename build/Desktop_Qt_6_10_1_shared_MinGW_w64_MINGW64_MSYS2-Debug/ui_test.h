@@ -11,7 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QLabel>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -19,16 +21,54 @@ QT_BEGIN_NAMESPACE
 class Ui_TEST
 {
 public:
-    QLabel *label;
+    QPushButton *pushButton;
+    QTextBrowser *textBrowser;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
+    QTextBrowser *textBrowser_2;
+    QTextBrowser *textBrowser_3;
 
     void setupUi(QWidget *TEST)
     {
         if (TEST->objectName().isEmpty())
             TEST->setObjectName("TEST");
         TEST->resize(640, 480);
-        label = new QLabel(TEST);
-        label->setObjectName("label");
-        label->setGeometry(QRect(250, 230, 231, 20));
+        pushButton = new QPushButton(TEST);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(250, 380, 131, 29));
+        textBrowser = new QTextBrowser(TEST);
+        textBrowser->setObjectName("textBrowser");
+        textBrowser->setGeometry(QRect(30, 70, 581, 91));
+        horizontalLayoutWidget = new QWidget(TEST);
+        horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
+        horizontalLayoutWidget->setGeometry(QRect(50, 20, 551, 41));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        pushButton_2 = new QPushButton(horizontalLayoutWidget);
+        pushButton_2->setObjectName("pushButton_2");
+
+        horizontalLayout->addWidget(pushButton_2);
+
+        pushButton_3 = new QPushButton(horizontalLayoutWidget);
+        pushButton_3->setObjectName("pushButton_3");
+
+        horizontalLayout->addWidget(pushButton_3);
+
+        pushButton_4 = new QPushButton(horizontalLayoutWidget);
+        pushButton_4->setObjectName("pushButton_4");
+
+        horizontalLayout->addWidget(pushButton_4);
+
+        textBrowser_2 = new QTextBrowser(TEST);
+        textBrowser_2->setObjectName("textBrowser_2");
+        textBrowser_2->setGeometry(QRect(30, 170, 581, 91));
+        textBrowser_3 = new QTextBrowser(TEST);
+        textBrowser_3->setObjectName("textBrowser_3");
+        textBrowser_3->setGeometry(QRect(30, 270, 581, 91));
 
         retranslateUi(TEST);
 
@@ -38,7 +78,10 @@ public:
     void retranslateUi(QWidget *TEST)
     {
         TEST->setWindowTitle(QCoreApplication::translate("TEST", "Form", nullptr));
-        label->setText(QCoreApplication::translate("TEST", "\321\201\320\276\320\264\320\265\321\200\320\266\320\270\320\274\320\276\320\265 \321\202\320\265\321\201\321\202\320\260", nullptr));
+        pushButton->setText(QCoreApplication::translate("TEST", "\320\227\320\260\320\262\320\265\321\200\321\210\320\270\321\202\321\214 \321\202\320\265\321\201\321\202", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("TEST", "\320\227\320\260\320\264\320\260\321\207\320\260 1", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("TEST", "\320\227\320\260\320\264\320\260\321\207\320\260 2", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("TEST", "\320\227\320\260\320\264\320\260\321\207\320\260 3", nullptr));
     } // retranslateUi
 
 };

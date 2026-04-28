@@ -25,20 +25,22 @@ private:
 protected:
     MyTcpClient(): QObject(nullptr){
         msocket = new QTcpSocket(this);
-        msocket->connectToHost("127.0.0.1", 33333);
+        msocket->connectToHost("127.0.0.1", 33333);//подключение к серверу
     }
     MyTcpClient(const MyTcpClient&);
     MyTcpClient& operator = (MyTcpClient &);
     ~MyTcpClient() {}
     friend class MyTcpClientDestroyer;
 public:
-    static MyTcpClient* getInstance(){
+    static MyTcpClient* getInstance(){//получить ссылку на обьект класса
         if (!instance){
             instance = new MyTcpClient();
             destroyer.initialize(instance);
         }
         return instance;
     }
+
+    //отправить и получить сообщение
     void sendMessage(QString);
     QString getMsg();
 };

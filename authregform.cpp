@@ -7,7 +7,7 @@
 
 #include <QObject>
 
-void authregform::showMsg(QString msg){
+void authregform::showMsg(QString msg){//показ ответа на запрос регистрации
     ui->textBrowser->setText(msg);
 }
 
@@ -24,10 +24,14 @@ authregform::~authregform()
     delete ui;
 }
 
-void authregform::on_pushButton_clicked()
+void authregform::on_pushButton_clicked()//нажатие на кнопку авторизации
 {
     QString log = ui->lineEdit->text();
     QString pass = ui->lineEdit_2->text();
+    if (log == "" or pass == ""){
+        showMsg("Fill in all fields");
+        return;
+    }
     handler->onLoginClicked(log, pass);
     QString msg = MyTcpClient::getInstance()->getMsg();
     QString res = ClientController::getInstance()->parseServerResponse(msg);
@@ -39,11 +43,15 @@ void authregform::on_pushButton_clicked()
 }
 
 
-void authregform::on_pushButton_2_clicked()
+void authregform::on_pushButton_2_clicked()//нажатие на кнопку регистрации
 {
     QString log = ui->lineEdit->text();
     QString pass = ui->lineEdit_2->text();
     QString email = ui->lineEdit_3->text();
+    if (log == "" or pass == "" or email == "") {
+        showMsg("Fill in all fields");
+        return;
+    }
     handler->onRegisterClicked(log, pass, email);
     QString msg = MyTcpClient::getInstance()->getMsg();
     showMsg(ClientController::getInstance()->parseServerResponse(msg));
