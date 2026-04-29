@@ -10,8 +10,16 @@ QString ClientController::makeLoginCommand(QString& login, QString& password){//
     return QString("auth %1 %2").arg(login).arg(password);
 }
 
-QString ClientController::makeTaskCommand(){//создать команду получить задачу
-    return QString("zadacha");
+QString ClientController::makeTask1Command(){//создать команду получить задачу
+    return QString("task1");
+}
+
+QString ClientController::makeTask2Command(){//создать команду получить задачу
+    return QString("task2");
+}
+
+QString ClientController::makeTask3Command(){//создать команду получить задачу
+    return QString("task3");
 }
 
 QString ClientController::makeRegisterCommand(QString& login, QString& password, QString& email){//создать команду регистрации
@@ -29,4 +37,9 @@ QString ClientController::parseServerResponse(QString &response){//парсин�
     if (response.contains("не удалась") || response.contains("failed")) {
         return "FAILED";
     }
+    return response;
+}
+
+QString ClientController::makeEndTestCommand(QString log, QString ans1, QString ans2, QString ans3){
+    return QString("submit 1:%1 2:%2 3:%3 %4").arg(ans1).arg(ans2).arg(ans3).arg(log);
 }

@@ -1,6 +1,7 @@
 #ifndef TEST_H
 #define TEST_H
 
+#include "buttonhandler.h"
 #include <QWidget>
 
 namespace Ui {
@@ -32,6 +33,7 @@ private slots:
     void on_pushButton_4_clicked();
 
 private:
+    ButtonHandler* handler;
     Ui::TEST *ui;
 };
 

@@ -39,8 +39,10 @@ public:
 
     QString makeLoginCommand(QString& login, QString& password);
     QString makeRegisterCommand(QString& login, QString& password, QString& email);
-    QString makeTaskCommand();
-
+    QString makeTask1Command();
+    QString makeTask2Command();
+    QString makeTask3Command();
+    QString makeEndTestCommand(QString login, QString ans1, QString ans2, QString ans3);
     QString makeStatCommand();
 
     QString parseServerResponse(QString& response);
