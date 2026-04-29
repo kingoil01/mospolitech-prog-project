@@ -59,10 +59,9 @@ bool Database::createTables()
     "CREATE TABLE IF NOT EXISTS tasks ("
         "user_id INTEGER PRIMARY KEY, "
         "login TEXT NOT NULL UNIQUE, "
-        "task1 INTEGER DEFAULT 0,"
-        "task2 INTEGER DEFAULT 0,"
-        "task3 INTEGER DEFAULT 0,"
-        "task4 INTEGER DEFAULT 0,"
+        "task1 TEXT DEFAULT 0,"
+        "task2 TEXT DEFAULT 0,"
+        "task3 TEXT DEFAULT 0,"
         "FOREIGN KEY (login) REFERENCES users (login) ON DELETE CASCADE)"
         );
     if (!success) {
@@ -103,39 +102,38 @@ bool Database::authoUser(const QString& login, const QString& pass){
 
 QString Database::stataUser(const QString& login){
     QSqlQuery query;
-    query.prepare("select * from tasks "
-                  "where login = :login");
+    query.prepare("SELECT * FROM tasks WHERE login = :login");
     query.bindValue(":login", login);
-    query.exec();
-    qDebug() << "Bound values:" << query.boundValues();
-    qDebug() << "Ошибка:" << query.lastError().text();
-    qDebug() << "Запрос выполнен, rows:" << query.size();
-    qDebug() << "Запрос выполнен, first row exists:" << query.first();
-    if (query.first()) {
-        int task1 = query.value("task1").toInt();
-        int task2 = query.value("task2").toInt();
-        int task3 = query.value("task3").toInt();
-        int task4 = query.value("task4").toInt();
-        return QString("Задачи: %1 %2 %3 %4")
-            .arg(task1).arg(task2).arg(task3).arg(task4);
-    }
-    return "Пользователь не найден или задачи отсутствуют";
-}
-bool Database::createUserTasks(const int& user_id, const QString& login, const int& task1, const int& task2, const int& task3, const int& task4)
-{
-    QSqlQuery query;
-    query.prepare("INSERT INTO tasks (user_id, login, task1, task2, task3, task4) "
-                  "VALUES (:user_id, :login, :task1, :task2, :task3, :task4)");
-    query.bindValue(":user_id", user_id);
-    query.bindValue(":login", login);
-    query.bindValue(":task1", task1);
-    query.bindValue(":task2", task2);
-    query.bindValue(":task3", task3);
-    query.bindValue(":task4", task4);
 
     if (!query.exec()) {
-        qDebug() << "Ошибка создания задач:" << query.lastError().text();
-        return false;
+        return "Ошибка запроса";
     }
-    return true;
+
+    if (query.first()) {
+        int task1 = query.value("task1").toString().toInt();
+        int task2 = query.value("task2").toString().toInt();
+        int task3 = query.value("task3").toString().toInt();
+
+        int solved = task1 + task2 + task3;
+
+        return QString("%1/3").arg(solved);
+    }
+
+    return "Пользователь не найден или задачи отсутствуют";
+}
+int Database::getCorrectAnswer(int taskNumber) {
+    switch(taskNumber) {
+    case 1: return 3;
+    case 2: return 2;
+    case 3: return 3;
+    default: return -1;
+    }
+}
+bool Database::saveTaskResult(const QString& login, int taskNum, QString result) {
+    QSqlQuery query;
+    QString sql = QString("UPDATE tasks SET task%1 = :result WHERE login = :login").arg(taskNum);
+    query.prepare("UPDATE tasks SET task%1 = :result WHERE login = :login");
+    query.bindValue(":result", result);
+    query.bindValue(":login", login);
+    return query.exec();
 }

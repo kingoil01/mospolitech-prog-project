@@ -5,14 +5,27 @@ CommandParsing::CommandParsing(QObject *parent) : QObject(parent){
     my_database->openDatabase("test1.db");
     my_database->createTables();
 }
-QString CommandParsing::Calc(){
-    return "Калькулятор: ";
-}
-QString CommandParsing::Rebra(){
-    return "Здесь будут рёбра: ";
-}
-QString CommandParsing::Way(){
-    return "Здесь будет путь: ";
+QString CommandParsing::handleSubmit(QStringList& parts, QString login) {
+    int correctCount = 0;
+    int totalTasks = parts.size() - 1;
+
+    for (int i = 1; i <= totalTasks; i++) {
+        QStringList taskParts = parts[i].split(":");
+        int taskNum = taskParts[0].toInt();
+        int userAnswer = taskParts[1].toInt();
+
+        int correctAnswer = my_database->getCorrectAnswer(taskNum);
+
+        if (userAnswer == correctAnswer) {
+            correctCount++;
+            my_database->saveTaskResult(login, taskNum, "1");
+        } else {
+            // Сохраняем в БД: задача не решена
+            my_database->saveTaskResult(login, taskNum, "0");
+        }
+    }
+
+    return "Ответы приняты";
 }
 
 QString CommandParsing::Command(const QString &dataStr){
@@ -21,15 +34,6 @@ QString CommandParsing::Command(const QString &dataStr){
     QString res = "";
     if (command == "Echo"){
         res = dataStr;
-    }
-    else if (command == "Calc"){
-        res = Calc();
-    }
-    else if (command == "Way"){
-        res = Way();
-    }
-    else if (command == "Rebra"){
-        res = Rebra();
     }
     else if (command == "auth"){
         if (parts.size()<3){
@@ -65,21 +69,25 @@ QString CommandParsing::Command(const QString &dataStr){
         QString Login = parts[1];
         res = my_database->stataUser(Login);
     }
-    else if (command == "cr"){
-        int User_id = parts[1].toInt();
-        QString Login = parts[2];
-        int Task1 = parts[3].toInt();
-        int Task2 = parts[4].toInt();
-        int Task3 = parts[5].toInt();
-        int Task4 = parts[6].toInt();
-        bool true_or_false = my_database->createUserTasks(User_id, Login, Task1, Task2, Task3, Task4);
-        if (true_or_false){
-            res = "Данные заполнены";
-        }
-        else res = "Данные не заполнены";
+    else if (command == "task1"){
+        res = "Найди кратчайшее расстояние от вершины 2 до вершины 6 в графе с рёбрами:"
+              " 1-2, 1-5, 2-3, 3-4, 3-7, 4-5, 5-6, 6-7. "
+              "Вес всех рёбер равен 1. В ответе укажи только количество шагов.";
     }
-    else if (command == "zadacha"){
-        res = "Задача подгружается с сервера, сколько будет 2 + 2";
+    else if (command == "task2"){
+        res = "Найди кратчайшее расстояние от вершины 2 до вершины 6 в графе с рёбрами:"
+              " 1-2, 2-3, 3-4, 4-5, 5-6, 1-6. Вес всех рёбер равен 1."
+              " В ответе укажи только количество шагов.";
+    }
+    else if (command == "task3"){
+        res = "Найди кратчайшее расстояние от вершины 3 до вершины 6 в графе с рёбрами: "
+              "1-2, 2-3, 3-4, 4-5, 5-6, 2-5. Вес всех рёбер равен 1."
+              " В ответе укажи только количество шагов.";
+    }
+    else if (command == "submit") {
+        // parts = ["submit", "1:3", "2:2", "3:3", ]
+        QString login = parts[-1];
+        res = handleSubmit(parts, login);
     }
     return res;
 }
