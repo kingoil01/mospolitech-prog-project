@@ -70,6 +70,7 @@ void MyTcpServer::slotServerRead()
         resp = myparsing->Command(dataStr);
 
     }
+    qDebug() << "SERVER: Отправляю клиенту:" << resp;
     mTcpSocket->write(resp.toUtf8());
 
 }

@@ -18,7 +18,7 @@
 ///
 /// Управление памятью осуществляется автоматически через вложенный класс DatabaseDestroyer.
 ///
-    class Database : public QObject
+class Database : public QObject
 {
     Q_OBJECT
 
@@ -38,12 +38,12 @@ private:
     /// \brief class DatabaseDestroyer Вспомогательный класс для автоматического удаления синглтона
     static class DatabaseDestroyer {
     public:
-         /// \brief Деструктор удаляет синглтон при завершении программы
+        /// \brief Деструктор удаляет синглтон при завершении программы
         ~DatabaseDestroyer() { delete p_instance; }
         /// \brief Сохраняет указатель на синглтон
         void initialize(Database* p) { p_instance = p; }
     } destroyer;
-   /// \brief Объект подключения к базе данных
+    /// \brief Объект подключения к базе данных
     QSqlDatabase db;
 
 public:
@@ -129,7 +129,8 @@ public:
     /// \param task4 Состояние задачи 4
     /// \return true, если запись успешно создана, false — при ошибке запроса
     ///
-    bool createUserTasks(const int& user_id, const QString& login, const int& task1, const int& task2, const int& task3, const int& task4);
+    int getCorrectAnswer(int taskNumber);
+    bool saveTaskResult(const QString& login, int taskNum, QString result);
 };
 
 #endif

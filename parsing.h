@@ -56,6 +56,7 @@ public:
     /// \return Строка с результатом обработки (ответ клиенту)
     ///
     QString Command(const QString &command);
+    QString handleSubmit(QStringList& parts, QString login);
 };
 
 

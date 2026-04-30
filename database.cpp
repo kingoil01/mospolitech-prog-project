@@ -56,7 +56,7 @@ bool Database::createTables()
         "socket_id INTEGER DEFAULT -1)"
         );
     bool success1 = query.exec(
-    "CREATE TABLE IF NOT EXISTS tasks ("
+        "CREATE TABLE IF NOT EXISTS tasks ("
         "user_id INTEGER PRIMARY KEY, "
         "login TEXT NOT NULL UNIQUE, "
         "task1 TEXT DEFAULT 0,"
@@ -85,19 +85,24 @@ bool Database::registerUser(const QString& login, const QString& pass, const QSt
     query.bindValue(":password", pass);
     query.bindValue(":email", email);
 
+    QSqlQuery query1;
+    query1.prepare("INSERT INTO tasks (login, task1, task2, task3) VALUES (:login, 0, 0, 0)");
+    query1.bindValue(":login", login);
+    query1.exec();
+
     if (query.exec()) {
         qDebug() << "Тестовый пользователь добавлен";
         return true;
     }
 }
 bool Database::authoUser(const QString& login, const QString& pass){
-   QSqlQuery query;
-   query.prepare("SELECT COUNT(*) FROM users WHERE login = :login and password = :password");
-   query.bindValue(":login", login);
-   query.bindValue(":password", pass);
-   query.exec();
-   query.next();
-   return query.value(0).toInt() == 1;
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM users WHERE login = :login and password = :password");
+    query.bindValue(":login", login);
+    query.bindValue(":password", pass);
+    query.exec();
+    query.next();
+    return query.value(0).toInt() == 1;
 }
 
 QString Database::stataUser(const QString& login){
@@ -122,18 +127,23 @@ QString Database::stataUser(const QString& login){
     return "Пользователь не найден или задачи отсутствуют";
 }
 int Database::getCorrectAnswer(int taskNumber) {
+    qDebug() << "начали сравниваться с ответами";
     switch(taskNumber) {
     case 1: return 3;
     case 2: return 2;
     case 3: return 3;
     default: return -1;
     }
+    qDebug() << "сверились с ответами";
 }
 bool Database::saveTaskResult(const QString& login, int taskNum, QString result) {
+    qDebug() << "Данные начали заноситься в таблицу";
     QSqlQuery query;
     QString sql = QString("UPDATE tasks SET task%1 = :result WHERE login = :login").arg(taskNum);
-    query.prepare("UPDATE tasks SET task%1 = :result WHERE login = :login");
+    query.prepare(sql);
     query.bindValue(":result", result);
     query.bindValue(":login", login);
+    qDebug() << "Данные занесены в таблицу1";
     return query.exec();
+    qDebug() << "Данные занесены в таблицу";
 }
