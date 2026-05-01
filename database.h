@@ -18,6 +18,13 @@
 ///
 /// Управление памятью осуществляется автоматически через вложенный класс DatabaseDestroyer.
 ///
+struct EulerTask {
+    int id;
+    double x0, y0;
+    double h;
+    double (*f)(double x, double y);
+    double (*exact)(double x);
+};
 class Database : public QObject
 {
     Q_OBJECT
@@ -45,7 +52,10 @@ private:
     } destroyer;
     /// \brief Объект подключения к базе данных
     QSqlDatabase db;
-
+    int randomIndexTask1;
+    int randomIndexTask2;
+    int randomIndexTask3;
+    int randomIndexTask4;
 public:
     ///
     /// \brief getInstance Получает единственный экземпляр класса Database (синглтон)
@@ -129,8 +139,27 @@ public:
     /// \param task4 Состояние задачи 4
     /// \return true, если запись успешно создана, false — при ошибке запроса
     ///
-    int getCorrectAnswer(int taskNumber);
     bool saveTaskResult(const QString& login, int taskNum, QString result);
+    QString get_Task1();
+    QString get_Task2();
+    QString get_Task3();
+    QString get_Task4();
+    double calculateShortestPath(int taskIndex);
+    int bfsShortestPath(int vertexCount, const QVector<QPair<int,int>>& edges, int start, int end);
+    double simpsonError(const QVector<double>& coeffs, double a, double b);
+
+    double f1(double x, double y);
+    double exact1(double x);
+    double f2(double x, double y);
+    double exact2(double x);
+    double f3(double x, double y);
+    double exact3(double x);
+    double eulerError(const EulerTask& task);
+    double f11(double x, int segment);
+    double f22(double x, int segment);
+    double f33(double x, int segment);
+    double discontinuityRectangleIntegral(double a, double b, const QVector<double>& breakpoints,
+    double (*func)(double x, int segmentIndex));
 };
 
 #endif
