@@ -42,7 +42,8 @@ public:
     QString makeTask1Command();
     QString makeTask2Command();
     QString makeTask3Command();
-    QString makeEndTestCommand(QString login, QString ans1, QString ans2, QString ans3);
+    QString makeTask4Command();
+    QString makeEndTestCommand(QString login, QString ans1, QString ans2, QString ans3, QString ans4);
     QString makeStatCommand();
 
     QString parseServerResponse(QString& response);

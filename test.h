@@ -20,6 +20,7 @@ public:
     void showTask1();
     void showTask2();
     void showTask3();
+    void showTask4();
 signals:
     //сигнал выхода из теста
     void exit_test();
@@ -31,6 +32,8 @@ private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
     void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
 
 private:
     ButtonHandler* handler;

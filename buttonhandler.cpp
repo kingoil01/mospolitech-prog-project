@@ -18,8 +18,8 @@ void ButtonHandler::onRegisterClicked(QString login, QString password, QString e
     MyTcpClient::getInstance()->sendMessage(q);
 }
 
-void ButtonHandler::onEndClicked(QString ans1, QString ans2, QString ans3){
+void ButtonHandler::onEndClicked(QString ans1, QString ans2, QString ans3, QString ans4){
     QString log = ManagerForm::getLogin();
-    QString q = controller->makeEndTestCommand(log, ans1, ans2, ans3);
+    QString q = controller->makeEndTestCommand(log, ans1, ans2, ans3, ans4);
     MyTcpClient::getInstance()->sendMessage(q);
 }

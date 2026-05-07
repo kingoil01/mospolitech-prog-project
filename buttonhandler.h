@@ -14,7 +14,7 @@ public:
 
     void onLoginClicked(QString login, QString password);
     void onRegisterClicked(QString login, QString password, QString email);
-    void onEndClicked(QString ans1, QString ans2, QString ans3);
+    void onEndClicked(QString ans1, QString ans2, QString ans3, QString ans4);
     onGetStatClicked();
 };
 

@@ -22,6 +22,10 @@ QString ClientController::makeTask3Command(){//создать команду п�
     return QString("task3");
 }
 
+QString ClientController::makeTask4Command(){//создать команду получить задачу
+    return QString("task4");
+}
+
 QString ClientController::makeRegisterCommand(QString& login, QString& password, QString& email){//создать команду регистрации
     return QString("reg %1 %2 %3").arg(login).arg(password).arg(email);
 }
@@ -40,6 +44,6 @@ QString ClientController::parseServerResponse(QString &response){//парсин�
     return response;
 }
 
-QString ClientController::makeEndTestCommand(QString log, QString ans1, QString ans2, QString ans3){
-    return QString("submit 1:%1 2:%2 3:%3 %4").arg(ans1).arg(ans2).arg(ans3).arg(log);
+QString ClientController::makeEndTestCommand(QString log, QString ans1, QString ans2, QString ans3, QString ans4){
+    return QString("submit 1:%1 2:%2 3:%3 4:%4 %5").arg(ans1).arg(ans2).arg(ans3).arg(ans4).arg(log);
 }
