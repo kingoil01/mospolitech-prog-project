@@ -1,0 +1,15 @@
+release/authregform.o
+release/buttonhandler.o
+release/clientcontroller.o
+release/main.o
+release/mainform.o
+release/managerform.o
+release/mytcpclient.o
+release/test.o
+release/moc_authregform.o
+release/moc_buttonhandler.o
+release/moc_clientcontroller.o
+release/moc_mainform.o
+release/moc_managerform.o
+release/moc_mytcpclient.o
+release/moc_test.o

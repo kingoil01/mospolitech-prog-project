@@ -1,0 +1,15 @@
+debug/authregform.o
+debug/buttonhandler.o
+debug/clientcontroller.o
+debug/main.o
+debug/mainform.o
+debug/managerform.o
+debug/mytcpclient.o
+debug/test.o
+debug/moc_authregform.o
+debug/moc_buttonhandler.o
+debug/moc_clientcontroller.o
+debug/moc_mainform.o
+debug/moc_managerform.o
+debug/moc_mytcpclient.o
+debug/moc_test.o
