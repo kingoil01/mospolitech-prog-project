@@ -4,10 +4,21 @@
 #include <QDebug>
 #include <QQueue>
 #include <cmath>
+#include <cstdlib>   // для rand(), srand()
+#include <ctime>     // для time()
 Database* Database::p_instance = nullptr;
 Database::DatabaseDestroyer Database::destroyer;
 Database::Database(QObject *parent) : QObject(parent)
 {
+    // Инициализируем генератор случайных чисел
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+    // Инициализируем индексы задач (чтобы не было мусора)
+    randomIndexTask1 = rand() % 3;
+    randomIndexTask2 = rand() % 3;
+    randomIndexTask3 = rand() % 3;
+    randomIndexTask4 = rand() % 3;
+
     qDebug() << "Database constructor";
 }
 
@@ -81,23 +92,28 @@ bool Database::createTables()
     return true;
 }
 
-bool Database::registerUser(const QString& login, const QString& pass, const QString& email){
+bool Database::registerUser(const QString& login, const QString& pass, const QString& email) {
     QSqlQuery query;
     query.prepare("INSERT OR IGNORE INTO users (login, password, email) VALUES (:login, :password, :email)");
     query.bindValue(":login", login);
     query.bindValue(":password", pass);
     query.bindValue(":email", email);
 
-    QSqlQuery query1;
-    query1.prepare("INSERT INTO tasks (login, task1, task2, task3, task4) VALUES (:login, 0, 0, 0, 0)");
-    query1.bindValue(":login", login);
-    query1.exec();
+    bool userOk = query.exec();
 
-    if (query.exec()) {
-        qDebug() << "Тестовый пользователь добавлен";
-        return true;
+    if (userOk) {
+        QSqlQuery query1;
+        query1.prepare("INSERT INTO tasks (login, task1, task2, task3, task4) VALUES (:login, 0, 0, 0, 0)");
+        query1.bindValue(":login", login);
+        bool taskOk = query1.exec();
+
+        qDebug() << "Регистрация:" << (userOk && taskOk ? "успешна" : "не удалась");
+        return userOk && taskOk;
     }
+
+    return false;
 }
+
 bool Database::authoUser(const QString& login, const QString& pass){
     QSqlQuery query;
     query.prepare("SELECT COUNT(*) FROM users WHERE login = :login and password = :password");
@@ -131,16 +147,18 @@ QString Database::stataUser(const QString& login){
 }
 
 bool Database::saveTaskResult(const QString& login, int taskNum, QString result) {
-    qDebug() << "Данные начали заноситься в таблицу";
+    qDebug() << "Начинаю сохранение результата";
     QSqlQuery query;
     QString sql = QString("UPDATE tasks SET task%1 = :result WHERE login = :login").arg(taskNum);
     query.prepare(sql);
     query.bindValue(":result", result);
     query.bindValue(":login", login);
-    qDebug() << "Данные занесены в таблицу1";
-    return query.exec();
-    qDebug() << "Данные занесены в таблицу";
+
+    bool ok = query.exec();
+    qDebug() << "Сохранение результата:" << (ok ? "успешно" : "ошибка");
+    return ok;  // ✅ return в самом конце
 }
+
 QString Database::get_Task1(){
     QStringList  alTasks = {"Найди кратчайшее расстояние от вершины 2 до вершины 6 в графе с рёбрами:"
                 " 1-2, 1-5, 2-3, 3-4, 3-7, 4-5, 5-6, 6-7. "

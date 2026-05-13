@@ -144,6 +144,15 @@ public:
     QString get_Task2();
     QString get_Task3();
     QString get_Task4();
+    ///
+    /// \brief Возвращает объект подключения к БД (для тестов)
+    ///
+    QSqlDatabase getDatabase() { return db; }
+    ///
+    /// \brief Устанавливает объект подключения к БД (для тестов)
+    ///
+    void setDatabase(const QSqlDatabase& newDb) { db = newDb; }
+
     double calculateShortestPath(int taskIndex);
     int bfsShortestPath(int vertexCount, const QVector<QPair<int,int>>& edges, int start, int end);
     double simpsonError(const QVector<double>& coeffs, double a, double b);
