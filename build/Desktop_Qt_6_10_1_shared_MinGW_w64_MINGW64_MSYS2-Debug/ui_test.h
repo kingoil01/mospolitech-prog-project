@@ -29,6 +29,7 @@ public:
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
     QPushButton *pushButton_4;
+    QPushButton *pushButton_5;
     QTextBrowser *textBrowser;
     QTextBrowser *textBrowser_2;
     QTextBrowser *textBrowser_3;
@@ -36,18 +37,20 @@ public:
     QLineEdit *lineEdit;
     QLineEdit *lineEdit_3;
     QLineEdit *lineEdit_4;
+    QTextBrowser *textBrowser_4;
+    QLineEdit *lineEdit_5;
 
     void setupUi(QWidget *TEST)
     {
         if (TEST->objectName().isEmpty())
             TEST->setObjectName("TEST");
-        TEST->resize(640, 480);
+        TEST->resize(1280, 720);
         pushButton = new QPushButton(TEST);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(250, 380, 131, 29));
+        pushButton->setGeometry(QRect(580, 450, 151, 51));
         horizontalLayoutWidget = new QWidget(TEST);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(50, 20, 551, 41));
+        horizontalLayoutWidget->setGeometry(QRect(110, 20, 1071, 51));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -66,27 +69,38 @@ public:
 
         horizontalLayout->addWidget(pushButton_4);
 
+        pushButton_5 = new QPushButton(horizontalLayoutWidget);
+        pushButton_5->setObjectName("pushButton_5");
+
+        horizontalLayout->addWidget(pushButton_5);
+
         textBrowser = new QTextBrowser(TEST);
         textBrowser->setObjectName("textBrowser");
-        textBrowser->setGeometry(QRect(30, 70, 581, 151));
+        textBrowser->setGeometry(QRect(100, 100, 1091, 221));
         textBrowser_2 = new QTextBrowser(TEST);
         textBrowser_2->setObjectName("textBrowser_2");
-        textBrowser_2->setGeometry(QRect(30, 70, 581, 151));
+        textBrowser_2->setGeometry(QRect(100, 100, 1091, 221));
         textBrowser_3 = new QTextBrowser(TEST);
         textBrowser_3->setObjectName("textBrowser_3");
-        textBrowser_3->setGeometry(QRect(30, 70, 581, 151));
+        textBrowser_3->setGeometry(QRect(100, 100, 1091, 221));
         label = new QLabel(TEST);
         label->setObjectName("label");
-        label->setGeometry(QRect(290, 250, 63, 20));
+        label->setGeometry(QRect(630, 360, 63, 20));
         lineEdit = new QLineEdit(TEST);
         lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(260, 280, 113, 28));
+        lineEdit->setGeometry(QRect(540, 390, 231, 41));
         lineEdit_3 = new QLineEdit(TEST);
         lineEdit_3->setObjectName("lineEdit_3");
-        lineEdit_3->setGeometry(QRect(260, 280, 113, 28));
+        lineEdit_3->setGeometry(QRect(540, 390, 231, 41));
         lineEdit_4 = new QLineEdit(TEST);
         lineEdit_4->setObjectName("lineEdit_4");
-        lineEdit_4->setGeometry(QRect(260, 280, 113, 28));
+        lineEdit_4->setGeometry(QRect(540, 390, 231, 41));
+        textBrowser_4 = new QTextBrowser(TEST);
+        textBrowser_4->setObjectName("textBrowser_4");
+        textBrowser_4->setGeometry(QRect(100, 100, 1091, 221));
+        lineEdit_5 = new QLineEdit(TEST);
+        lineEdit_5->setObjectName("lineEdit_5");
+        lineEdit_5->setGeometry(QRect(540, 390, 231, 41));
 
         retranslateUi(TEST);
 
@@ -100,6 +114,7 @@ public:
         pushButton_2->setText(QCoreApplication::translate("TEST", "\320\227\320\260\320\264\320\260\321\207\320\260 1", nullptr));
         pushButton_3->setText(QCoreApplication::translate("TEST", "\320\227\320\260\320\264\320\260\321\207\320\260 2", nullptr));
         pushButton_4->setText(QCoreApplication::translate("TEST", "\320\227\320\260\320\264\320\260\321\207\320\260 3", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("TEST", "\320\227\320\260\320\264\320\260\321\207\320\260 4", nullptr));
         label->setText(QCoreApplication::translate("TEST", "\320\236\321\202\320\262\320\265\321\202:", nullptr));
     } // retranslateUi
 

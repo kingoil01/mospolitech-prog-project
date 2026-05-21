@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>480</height>
+    <width>1280</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>380</y>
-     <width>131</width>
-     <height>29</height>
+     <x>580</x>
+     <y>450</y>
+     <width>151</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -29,10 +29,10 @@
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>110</x>
      <y>20</y>
-     <width>551</width>
-     <height>41</height>
+     <width>1071</width>
+     <height>51</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -69,38 +69,38 @@
   <widget class="QTextBrowser" name="textBrowser">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>70</y>
-     <width>581</width>
-     <height>151</height>
+     <x>100</x>
+     <y>100</y>
+     <width>1091</width>
+     <height>221</height>
     </rect>
    </property>
   </widget>
   <widget class="QTextBrowser" name="textBrowser_2">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>70</y>
-     <width>581</width>
-     <height>151</height>
+     <x>100</x>
+     <y>100</y>
+     <width>1091</width>
+     <height>221</height>
     </rect>
    </property>
   </widget>
   <widget class="QTextBrowser" name="textBrowser_3">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>70</y>
-     <width>581</width>
-     <height>151</height>
+     <x>100</x>
+     <y>100</y>
+     <width>1091</width>
+     <height>221</height>
     </rect>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>250</y>
+     <x>630</x>
+     <y>360</y>
      <width>63</width>
      <height>20</height>
     </rect>
@@ -112,50 +112,50 @@
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>280</y>
-     <width>113</width>
-     <height>28</height>
+     <x>540</x>
+     <y>390</y>
+     <width>231</width>
+     <height>41</height>
     </rect>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>280</y>
-     <width>113</width>
-     <height>28</height>
+     <x>540</x>
+     <y>390</y>
+     <width>231</width>
+     <height>41</height>
     </rect>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_4">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>280</y>
-     <width>113</width>
-     <height>28</height>
+     <x>540</x>
+     <y>390</y>
+     <width>231</width>
+     <height>41</height>
     </rect>
    </property>
   </widget>
   <widget class="QTextBrowser" name="textBrowser_4">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>70</y>
-     <width>581</width>
-     <height>151</height>
+     <x>100</x>
+     <y>100</y>
+     <width>1091</width>
+     <height>221</height>
     </rect>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_5">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>280</y>
-     <width>113</width>
-     <height>28</height>
+     <x>540</x>
+     <y>390</y>
+     <width>231</width>
+     <height>41</height>
     </rect>
    </property>
   </widget>

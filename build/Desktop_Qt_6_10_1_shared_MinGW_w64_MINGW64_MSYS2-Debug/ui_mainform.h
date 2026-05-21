@@ -32,10 +32,10 @@ public:
     {
         if (MainForm->objectName().isEmpty())
             MainForm->setObjectName("MainForm");
-        MainForm->resize(640, 480);
+        MainForm->resize(1280, 720);
         verticalLayoutWidget = new QWidget(MainForm);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(190, 50, 261, 151));
+        verticalLayoutWidget->setGeometry(QRect(230, 90, 831, 221));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -51,10 +51,10 @@ public:
 
         pushButton_2 = new QPushButton(MainForm);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(30, 420, 90, 29));
+        pushButton_2->setGeometry(QRect(60, 640, 90, 29));
         pushButton_3 = new QPushButton(MainForm);
         pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(260, 300, 90, 29));
+        pushButton_3->setGeometry(QRect(420, 350, 461, 61));
 
         retranslateUi(MainForm);
 

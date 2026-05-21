@@ -45,10 +45,10 @@ public:
     {
         if (authregform->objectName().isEmpty())
             authregform->setObjectName("authregform");
-        authregform->resize(640, 480);
+        authregform->resize(1280, 720);
         verticalLayoutWidget = new QWidget(authregform);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(50, 80, 541, 171));
+        verticalLayoutWidget->setGeometry(QRect(360, 190, 561, 171));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -99,7 +99,7 @@ public:
 
         horizontalLayoutWidget_3 = new QWidget(authregform);
         horizontalLayoutWidget_3->setObjectName("horizontalLayoutWidget_3");
-        horizontalLayoutWidget_3->setGeometry(QRect(170, 320, 271, 41));
+        horizontalLayoutWidget_3->setGeometry(QRect(500, 440, 271, 41));
         horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -115,7 +115,7 @@ public:
 
         textBrowser = new QTextBrowser(authregform);
         textBrowser->setObjectName("textBrowser");
-        textBrowser->setGeometry(QRect(220, 270, 171, 31));
+        textBrowser->setGeometry(QRect(500, 390, 271, 41));
 
         retranslateUi(authregform);
 
