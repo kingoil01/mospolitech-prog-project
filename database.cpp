@@ -4,21 +4,11 @@
 #include <QDebug>
 #include <QQueue>
 #include <cmath>
-#include <cstdlib>   // для rand(), srand()
-#include <ctime>     // для time()
+#include <QRegularExpression>
 Database* Database::p_instance = nullptr;
 Database::DatabaseDestroyer Database::destroyer;
 Database::Database(QObject *parent) : QObject(parent)
 {
-    // Инициализируем генератор случайных чисел
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
-
-    // Инициализируем индексы задач (чтобы не было мусора)
-    randomIndexTask1 = rand() % 3;
-    randomIndexTask2 = rand() % 3;
-    randomIndexTask3 = rand() % 3;
-    randomIndexTask4 = rand() % 3;
-
     qDebug() << "Database constructor";
 }
 
@@ -92,28 +82,56 @@ bool Database::createTables()
     return true;
 }
 
-bool Database::registerUser(const QString& login, const QString& pass, const QString& email) {
+QString Database::registerUser(const QString& login, const QString& pass, const QString& email){
+    // Проверка логина: длина от 3 до 10 символов
+    if (login.length() < 3 || login.length() > 10) {
+        return "Логин должен быть от 3 до 10 символов";
+    }
+
+    QRegularExpression loginRegex("^[a-zA-Z0-9_]+$");
+    if (!loginRegex.match(login).hasMatch()) {
+        return "Логин может содержать только буквы A-Z, a-z и символ подчёркивания (_)";
+    }
+
+    // Проверка логина: без пробелов и табуляции
+    if (login.contains(" ") || login.contains("\t")) {
+        return "Логин не может содержать пробелы или табуляцию";
+    }
+
+    // Проверка пароля: длина от 6 до 10 символов
+    if (pass.length() < 6 || pass.length() > 10) {
+        return "Пароль должен быть от 6 до 10 символов";
+    }
+
+    // Проверка пароля: без пробелов и табуляции
+    if (pass.contains(" ") || pass.contains("\t")) {
+        return "Пароль не может содержать пробелы или табуляцию";
+    }
+
+    // Проверка email: наличие символа @
+    if (!email.contains("@")) {
+        return "Email должен содержать символ @";
+    }
+
     QSqlQuery query;
     query.prepare("INSERT OR IGNORE INTO users (login, password, email) VALUES (:login, :password, :email)");
     query.bindValue(":login", login);
     query.bindValue(":password", pass);
     query.bindValue(":email", email);
 
-    bool userOk = query.exec();
+    QSqlQuery query1;
+    query1.prepare("INSERT INTO tasks (login, task1, task2, task3, task4) VALUES (:login, 0, 0, 0, 0)");
+    query1.bindValue(":login", login);
+    query1.exec();
 
-    if (userOk) {
-        QSqlQuery query1;
-        query1.prepare("INSERT INTO tasks (login, task1, task2, task3, task4) VALUES (:login, 0, 0, 0, 0)");
-        query1.bindValue(":login", login);
-        bool taskOk = query1.exec();
-
-        qDebug() << "Регистрация:" << (userOk && taskOk ? "успешна" : "не удалась");
-        return userOk && taskOk;
+    if (query.exec()) {
+        if (query.numRowsAffected() > 0) {
+            return "";
+        } else {
+            return "Пользователь с таким логином уже существует";
+        }
     }
-
-    return false;
 }
-
 bool Database::authoUser(const QString& login, const QString& pass){
     QSqlQuery query;
     query.prepare("SELECT COUNT(*) FROM users WHERE login = :login and password = :password");
@@ -147,18 +165,16 @@ QString Database::stataUser(const QString& login){
 }
 
 bool Database::saveTaskResult(const QString& login, int taskNum, QString result) {
-    qDebug() << "Начинаю сохранение результата";
+    qDebug() << "Данные начали заноситься в таблицу";
     QSqlQuery query;
     QString sql = QString("UPDATE tasks SET task%1 = :result WHERE login = :login").arg(taskNum);
     query.prepare(sql);
     query.bindValue(":result", result);
     query.bindValue(":login", login);
-
-    bool ok = query.exec();
-    qDebug() << "Сохранение результата:" << (ok ? "успешно" : "ошибка");
-    return ok;  // ✅ return в самом конце
+    qDebug() << "Данные занесены в таблицу1";
+    return query.exec();
+    qDebug() << "Данные занесены в таблицу";
 }
-
 QString Database::get_Task1(){
     QStringList  alTasks = {"Найди кратчайшее расстояние от вершины 2 до вершины 6 в графе с рёбрами:"
                 " 1-2, 1-5, 2-3, 3-4, 3-7, 4-5, 5-6, 6-7. "

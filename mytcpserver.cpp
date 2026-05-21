@@ -50,7 +50,6 @@ void MyTcpServer::slotNewConnection()
         connect(clientSocket, &QTcpSocket::readyRead, this, &MyTcpServer::slotServerRead);
         connect(clientSocket, &QTcpSocket::disconnected, this, &MyTcpServer::slotClientDisconnected);
 
-        clientSocket->write("Hello, World!!! I am echo server!\r\n");
         clientSocket->flush();
     }
 }

@@ -54,14 +54,14 @@ QString CommandParsing::Command(const QString &dataStr){
         QString Login = parts[1];
         QString Pass = parts[2];
         QString Email = parts[3];
-        bool true_or_false = my_database->registerUser(Login, Pass, Email);
-        if (true_or_false){
-            res = "Регистрация выполнена успешно";
-        }
-        else res = "Регистрация не удалась";
+        QString result = my_database->registerUser(Login, Pass, Email);
+        if (result.isEmpty()) {
+            res = "Регистрация успешна";
+        } else {
+            res = "Ошибка: " + result;
         }
     }
-
+    }
     else if (command == "stata"){
         qDebug() << "PARSING: Обрабатываю команду:" << command;
         QString Login = parts[1];
