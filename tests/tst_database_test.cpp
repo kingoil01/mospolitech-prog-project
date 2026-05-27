@@ -85,6 +85,31 @@ private slots:
         QFile::remove(dbName);
     }
 
+    void test_simpson_error_for_quadratic_polynomial()
+    {
+        Database* db = Database::getInstance();
+
+        QVector<double> coeffs = {2, 3, 1};  // 2x² + 3x + 1
+        double a = 0.0, b = 1.0;
+
+        double error = db->simpsonError(coeffs, a, b);
+
+        // Для полинома степени ≤ 3 метод Симпсона даёт точный результат
+        QVERIFY2(qFabs(error) < 1e-9,
+                 QString("Погрешность Симпсона для квадратичного полинома должна быть 0, получено %1")
+                     .arg(error).toUtf8());
+
+        // Дополнительная проверка: кубический полином x³ на [0,1]
+        // Точное значение: 1/4 = 0.25
+        // Симпсон: (1/6)*(0 + 4*(0.125) + 1) = (1/6)*(0+0.5+1)=1.5/6=0.25 → ошибка 0
+        QVector<double> coeffs2 = {1, 0, 0, 0};  // x³
+        double error2 = db->simpsonError(coeffs2, 0.0, 1.0);
+
+        QVERIFY2(qFabs(error2) < 1e-9,
+                 QString("Погрешность Симпсона для кубического полинома должна быть 0, получено %1")
+                     .arg(error2).toUtf8());
+    }
+
 private:
     QCoreApplication* app = nullptr;
 };
