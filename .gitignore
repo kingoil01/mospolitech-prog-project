@@ -1,0 +1,33 @@
+# Qt Creator
+*.user
+*.user.*
+.qtcreator/
+.qtc_clangd/
+*.creator.user*
+*.creator.user.*
+*.config
+*.files
+*.includes
+
+# Сборка и отладка
+build-*/
+*-build/
+debug/
+release/
+*.o
+*.so
+*.a
+moc_*.cpp
+moc_*.h
+moc_predefs.h
+*.moc
+ui_*.h
+*.qmlc
+*.jsc
+Makefile*
+*.pro.user
+*.pro.user.*
+
+# Qt Creator с кэшем
+.qtc_clangd/
+.qtc_clangd/
