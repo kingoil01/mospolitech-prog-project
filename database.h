@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QSqlDatabase>
+
 ///
 /// \brief The Database class Класс для управления подключением к базе данных SQLite
 ///
@@ -14,17 +15,20 @@
 /// - Создание таблиц users и tasks (если не существуют)
 /// - Регистрация и авторизация пользователей
 /// - Получение статуса задач пользователя
-/// - Создание записей задач
+/// - Сохранение результатов задач
+/// - Генерация текстов задач (4 типа)
+/// - Вычисление правильных ответов для задач
 ///
 /// Управление памятью осуществляется автоматически через вложенный класс DatabaseDestroyer.
 ///
 struct EulerTask {
-    int id;
-    double x0, y0;
-    double h;
-    double (*f)(double x, double y);
-    double (*exact)(double x);
+    int id;             ///< Идентификатор задачи
+    double x0, y0;      ///< Начальные условия (x0, y0)
+    double h;           ///< Шаг метода Эйлера
+    double (*f)(double x, double y);      ///< Правая часть ДУ y' = f(x,y)
+    double (*exact)(double x);            ///< Точное решение ДУ
 };
+
 class Database : public QObject
 {
     Q_OBJECT
@@ -33,16 +37,17 @@ private:
     /// \brief Приватный конструктор (синглтон)
     /// Запрещает создание объектов класса извне
     explicit Database(QObject *parent = nullptr);
+
     /// \brief Запрет конструктора копирования
     Database(const Database&) = delete;
-    ///
-    /// \brief operator= Запрет оператора присваивания
-    /// \return
-    ///
+
+    /// \brief Запрет оператора присваивания
     Database& operator=(const Database&) = delete;
+
     /// \brief p_instance Указатель на единственный экземпляр (синглтон)
     static Database* p_instance;
-    /// \brief class DatabaseDestroyer Вспомогательный класс для автоматического удаления синглтона
+
+    /// \brief Вспомогательный класс для автоматического удаления синглтона
     static class DatabaseDestroyer {
     public:
         /// \brief Деструктор удаляет синглтон при завершении программы
@@ -50,125 +55,159 @@ private:
         /// \brief Сохраняет указатель на синглтон
         void initialize(Database* p) { p_instance = p; }
     } destroyer;
+
     /// \brief Объект подключения к базе данных
     QSqlDatabase db;
+
+    /// \brief Случайные индексы для выбора варианта каждой задачи
     int randomIndexTask1;
     int randomIndexTask2;
     int randomIndexTask3;
     int randomIndexTask4;
+
 public:
     ///
-    /// \brief getInstance Получает единственный экземпляр класса Database (синглтон)
+    /// \brief Получает единственный экземпляр класса Database (синглтон)
     /// Создаёт объект Database при первом вызове и возвращает указатель на него.
     /// При последующих вызовах возвращает тот же объект.
     /// Удаление объекта происходит автоматически при завершении программы
     /// благодаря классу DatabaseDestroyer.
     /// \return Указатель на единственный экземпляр Database
+    ///
     static Database* getInstance();
+
     /// \brief Деструктор, закрывает подключение к базе данных
     ~Database();
+
     ///
-    /// \brief openDatabase открывает соединение с базой данных
-    /// \param dbName переменная с названием файла базы данных
+    /// \brief Открывает соединение с базой данных SQLite
+    /// \param dbName Имя файла базы данных
     /// \return true, если удалось открыть, false — ошибка
     ///
     bool openDatabase(const QString& dbName);
+
     ///
-    /// \brief closeDatabase закрывает соединение с базой данных
+    /// \brief Закрывает соединение с базой данных
     ///
     void closeDatabase();
+
     ///
-    /// \brief createTables Создаёт таблицы users и tasks, если они не существуют
+    /// \brief Создаёт таблицы users и tasks, если они не существуют
     ///
-    /// Метод выполняет SQL-запросы для создания двух таблиц:
-    /// - users: хранит данные пользователей (id, login, password, email, socket_id)
-    /// - tasks: хранит статистику задач пользователей (user_id, login, task1-task4)
+    /// Таблицы:
+    /// - users: id, login, password, email, socket_id
+    /// - tasks: user_id, login, task1-task4
     ///
-    /// Таблица tasks связана с users по полю login через внешний ключ.
-    /// При удалении пользователя из таблицы users его задачи удаляются автоматически
-    /// благодаря ON DELETE CASCADE.
-    ///
-    /// \return true, если обе таблицы успешно созданы (или уже существуют),
-    ///  false, если произошла ошибка при создании любой из таблиц
+    /// \return true, если обе таблицы успешно созданы (или уже существуют)
     ///
     bool createTables();
+
     ///
-    /// \brief registerUser Регистрирует нового пользователя в системе
-    /// Метод добавляет запись в таблицу users с указанными логином, паролем и email.
-    /// Если пользователь с таким логином уже существует, запрос игнорируется (INSERT OR IGNORE).
-    /// \param login Логин пользователя (должен быть уникальным)
+    /// \brief Регистрирует нового пользователя в системе
+    /// Добавляет запись в таблицу users и создаёт запись задач со значениями 0
+    /// \param login Логин пользователя (уникальный)
     /// \param pass Пароль пользователя
     /// \param email Адрес электронной почты
-    /// \return true, если регистрация успешна, false — если пользователь уже существует
+    /// \return true, если регистрация успешна, false — пользователь уже существует
     ///
     bool registerUser(const QString& login, const QString& pass, const QString& email);
+
     ///
-    /// \brief authoUser Проверяет учётные данные пользователя
-    ///
-    /// Метод выполняет поиск в таблице users по логину и паролю.
-    /// Возвращает true, если найдена запись с указанными данными.
-    ///
+    /// \brief Проверяет учётные данные пользователя
     /// \param login Логин пользователя
     /// \param pass Пароль пользователя
-    /// \return true, если логин и пароль верны, false — в противном случае или при ошибке запроса
+    /// \return true, если логин и пароль верны
     ///
     bool authoUser(const QString& login, const QString& pass);
+
     ///
-    /// \brief stataUser Возвращает статус задач пользователя
-    ///
-    /// Метод ищет в таблице tasks запись с указанным логином.
-    /// Возвращает строку с состояниями всех четырёх задач.
-    ///
-    /// \param login Логин пользователя, чьи задачи запрашиваются
-    /// \return Строка формата "Задачи: X X X X", где X — 0 или 1,
-    ///         либо сообщение об ошибке, если пользователь не найден
+    /// \brief Возвращает статистику решённых задач пользователя
+    /// \param login Логин пользователя
+    /// \return Строка формата "X/4", где X — количество решённых задач
     ///
     QString stataUser(const QString& login);
+
     ///
-    /// \brief createUserTasks Создаёт запись с задачами для пользователя
-    ///
-    /// Метод вставляет в таблицу tasks новую запись с указанным user_id, логином
-    /// и состояниями задач. Если запись с таким user_id уже существует,
-    /// вставка будет проигнорирована (так как user_id является первичным ключом).
-    ///
-    /// \param user_id Идентификатор пользователя (из таблицы users)
+    /// \brief Сохраняет результат выполнения задачи
     /// \param login Логин пользователя
-    /// \param task1 Состояние задачи 1 (0 — не выполнена, 1 — выполнена)
-    /// \param task2 Состояние задачи 2
-    /// \param task3 Состояние задачи 3
-    /// \param task4 Состояние задачи 4
-    /// \return true, если запись успешно создана, false — при ошибке запроса
+    /// \param taskNum Номер задачи (1-4)
+    /// \param result Результат ("1" — решено, "0" — не решено)
+    /// \return true, если сохранение успешно
     ///
     bool saveTaskResult(const QString& login, int taskNum, QString result);
+
+    ///
+    /// \brief Возвращает текст задания №1 (поиск кратчайшего пути в графе)
+    /// \return Строка с условием задачи
+    ///
     QString get_Task1();
+
+    ///
+    /// \brief Возвращает текст задания №2 (погрешность метода Симпсона)
+    /// \return Строка с условием задачи
+    ///
     QString get_Task2();
+
+    ///
+    /// \brief Возвращает текст задания №3 (погрешность метода Эйлера)
+    /// \return Строка с условием задачи
+    ///
     QString get_Task3();
+
+    ///
+    /// \brief Возвращает текст задания №4 (интеграл с разрывами)
+    /// \return Строка с условием задачи
+    ///
     QString get_Task4();
+
+    ///
+    /// \brief Вычисляет правильный ответ для задачи по её номеру
+    /// \param taskNum Номер задачи (1-4)
+    /// \return Числовое значение правильного ответа
+    ///
+    double calculateShortestPath(int taskIndex);
+
+    ///
+    /// \brief Поиск кратчайшего пути в графе (BFS)
+    /// \param vertexCount Количество вершин
+    /// \param edges Список рёбер
+    /// \param start Стартовая вершина
+    /// \param end Конечная вершина
+    /// \return Длина кратчайшего пути или -1, если путь не найден
+    ///
+    int bfsShortestPath(int vertexCount, const QVector<QPair<int,int>>& edges, int start, int end);
+
+    ///
+    /// \brief Вычисляет погрешность метода Симпсона для полинома
+    /// \param coeffs Коэффициенты полинома (начиная со старшей степени)
+    /// \param a Нижний предел интегрирования
+    /// \param b Верхний предел интегрирования
+    /// \return Абсолютная погрешность
+    ///
+    double simpsonError(const QVector<double>& coeffs, double a, double b);
+
+    ///
+    /// \brief Вычисляет погрешность метода Эйлера на первом шаге
+    /// \param task Структура с параметрами задачи
+    /// \return Погрешность, округлённая до 2 знаков
+    ///
+    double eulerError(const EulerTask& task);
+
+    ///
+    /// \brief Вычисляет интеграл методом прямоугольников для функций с разрывами
+    /// \param a Нижний предел
+    /// \param b Верхний предел
+    /// \param breakpoints Точки разрыва
+    /// \param func Функция, возвращающая значение на каждом сегменте
+    /// \return Значение интеграла, округлённое до 2 знаков
+    ///
+    double discontinuityRectangleIntegral(double a, double b, const QVector<double>& breakpoints,
+                                          double (*func)(double x, int segmentIndex));
+
     ///
     /// \brief Возвращает объект подключения к БД (для тестов)
     ///
     QSqlDatabase getDatabase() { return db; }
-    ///
-    /// \brief Устанавливает объект подключения к БД (для тестов)
-    ///
-    void setDatabase(const QSqlDatabase& newDb) { db = newDb; }
-
-    double calculateShortestPath(int taskIndex);
-    int bfsShortestPath(int vertexCount, const QVector<QPair<int,int>>& edges, int start, int end);
-    double simpsonError(const QVector<double>& coeffs, double a, double b);
-
-    double f1(double x, double y);
-    double exact1(double x);
-    double f2(double x, double y);
-    double exact2(double x);
-    double f3(double x, double y);
-    double exact3(double x);
-    double eulerError(const EulerTask& task);
-    double f11(double x, int segment);
-    double f22(double x, int segment);
-    double f33(double x, int segment);
-    double discontinuityRectangleIntegral(double a, double b, const QVector<double>& breakpoints,
-    double (*func)(double x, int segmentIndex));
 };
 
 #endif
