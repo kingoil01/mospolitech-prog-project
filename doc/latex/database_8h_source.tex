@@ -1,0 +1,95 @@
+\doxysection{database.\+h}
+\hypertarget{database_8h_source}{}\label{database_8h_source}\doxymbox{\hyperlink{database_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DATABASE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DATABASE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QSqlDatabase>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QVector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QPair>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_euler_task}{EulerTask}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_euler_task_a6697a9ef919e73f3f92ecdb082c4961f}{id}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_euler_task_a4c1d29a23f4f7c025e3c57e56c7378f9}{x0}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_euler_task_a6376af7cdd29a695dc105a1425313945}{y0}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_euler_task_a88e1f6bd3e6c49d698966d2150caf950}{h}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ double\ (*\doxymbox{\hyperlink{struct_euler_task_ad8e90c9a478b6154c330da6915ce54fd}{f}})(double,\ double);\ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ double\ (*\doxymbox{\hyperlink{struct_euler_task_a87815499064e7829a55a4341a8cf41d3}{exact}})(double);\ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }Database\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{explicit}\ Database(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ Database(\textcolor{keyword}{const}\ Database\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00041\ \ \ \ \ Database\&\ operator=(\textcolor{keyword}{const}\ Database\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ Database*\ p\_instance;\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{class\ }DatabaseDestroyer\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \string~DatabaseDestroyer()\ \{\ \textcolor{keyword}{delete}\ p\_instance;\ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ initialize(Database*\ p)\ \{\ p\_instance\ =\ p;\ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \}\ destroyer;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ QSqlDatabase\ db;\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ randomIndexTask1;\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ randomIndexTask2;\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ randomIndexTask3;\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ randomIndexTask4;\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ Database*\ \doxymbox{\hyperlink{class_database_a5a3b028f980a577ea0b809eb92312761}{getInstance}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00075\ \ \ \ \ \doxymbox{\hyperlink{class_database_a84d399a2ad58d69daab9b05330e1316d}{\string~Database}}();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_database_adeb7c108606dbbf659060a0a4d56a5ce}{openDatabase}}(\textcolor{keyword}{const}\ QString\&\ dbName);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_database_a46102d6a468364377fbb410eb1866897}{closeDatabase}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_database_a571f9128e8207b0e2fc4b1a06af60a20}{createTables}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00100\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_database_ad1360facb704fff4380862ec8cb89f3d}{registerUser}}(\textcolor{keyword}{const}\ QString\&\ login,\ \textcolor{keyword}{const}\ QString\&\ pass,\ \textcolor{keyword}{const}\ QString\&\ email);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_database_a59e51bfa1d5d8124c588e19a1d6c2421}{authoUser}}(\textcolor{keyword}{const}\ QString\&\ login,\ \textcolor{keyword}{const}\ QString\&\ pass);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_database_adc079c2b6c3a2407ca8d1717b5ec98b2}{stataUser}}(\textcolor{keyword}{const}\ QString\&\ login);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_database_a7cda55b24e3c8a6eddf99493171156ef}{saveTaskResult}}(\textcolor{keyword}{const}\ QString\&\ login,\ \textcolor{keywordtype}{int}\ taskNum,\ QString\ result);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00127\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_database_adcf4efb29b889e7412fd4551a66b0e9c}{get\_Task1}}();}
+\DoxyCodeLine{00129\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_database_aa49cd34f08a50375b3407cd70d876c6e}{get\_Task2}}();}
+\DoxyCodeLine{00131\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_database_a86b8a52fe3c4994ff23b7da06ab3da4a}{get\_Task3}}();}
+\DoxyCodeLine{00133\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_database_a507ce4307fe8ef594b4664ce0ddd14ea}{get\_Task4}}();}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_a5a0551f277993741fd97e6c3b1ce32e8}{calculateShortestPath}}(\textcolor{keywordtype}{int}\ taskIndex);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_database_a0f279744b5b075b898c030d6dfee27b1}{bfsShortestPath}}(\textcolor{keywordtype}{int}\ vertexCount,\ \textcolor{keyword}{const}\ QVector<QPair<int,int>>\&\ edges,\ \textcolor{keywordtype}{int}\ start,\ \textcolor{keywordtype}{int}\ end);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_ac0cbb1303ebb33641908660cab107bdd}{simpsonError}}(\textcolor{keyword}{const}\ QVector<double>\&\ coeffs,\ \textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_ab679250f6143926e651847a2982957b0}{eulerError}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_euler_task}{EulerTask}}\&\ task);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_a6afd616624cf2d042fbaa492322c65bf}{discontinuityRectangleIntegral}}(\textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b,\ \textcolor{keyword}{const}\ QVector<double>\&\ breakpoints,}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ (*func)(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{int}\ segmentIndex));}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{comment}{/*\ Сигнатуры\ тестовых\ математических\ функций\ и\ точных\ решений\ */}}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_a1817503170d181a0168d69fc5b1320be}{f1}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_aecac1cad61f0451058f96ea6cc14cdc4}{exact1}}(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_a744906b16e4732d28e93d17d18ff7774}{f2}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_a7172d259ca99b0d66ed40e4548170077}{exact2}}(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_a9eae525830e7f0752e2118294c86b191}{f3}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_a25be0c546b83da54dcb060846d3ec55d}{exact3}}(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_af9e61cdbcd1abe74f81836c36821609f}{f11}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{int}\ segment);}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_a859e4085326b44209d73fb324303fb7d}{f22}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{int}\ segment);}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_database_a1d976a263b995908f297e870b40cc4d2}{f33}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{int}\ segment);}
+\DoxyCodeLine{00189\ \};}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DATABASE\_H}}
+
+\end{DoxyCode}

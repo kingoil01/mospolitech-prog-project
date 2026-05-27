@@ -1,0 +1,98 @@
+\doxysection{Файл database.\+cpp}
+\hypertarget{database_8cpp}{}\label{database_8cpp}\index{database.cpp@{database.cpp}}
+{\ttfamily \+\#include "{}database.\+h"{}}\newline
+{\ttfamily \+\#include $<$QSql\+Query$>$}\newline
+{\ttfamily \+\#include $<$QSql\+Error$>$}\newline
+{\ttfamily \+\#include $<$QDebug$>$}\newline
+{\ttfamily \+\#include $<$QQueue$>$}\newline
+{\ttfamily \+\#include $<$cmath$>$}\newline
+{\ttfamily \+\#include $<$QRegular\+Expression$>$}\newline
+\doxysubsubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_task_data}{Task\+Data}}
+\item 
+struct \doxymbox{\hyperlink{struct_simpson_task}{Simpson\+Task}}
+\item 
+struct \doxymbox{\hyperlink{struct_discontinuity_task}{Discontinuity\+Task}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+double \doxymbox{\hyperlink{database_8cpp_a669a1a1611a633e55da6b01c045a2e86}{f1}} (double x, double y)
+\item 
+double \doxymbox{\hyperlink{database_8cpp_a3cb9cd515ce2601173ed533ff3906b36}{exact1}} (double x)
+\item 
+double \doxymbox{\hyperlink{database_8cpp_a0ab7b11e725283300601754ad98a9eff}{f2}} (double x, double y)
+\item 
+double \doxymbox{\hyperlink{database_8cpp_a1d23b9b7bc7e1a268628b445853a9474}{exact2}} (double x)
+\item 
+double \doxymbox{\hyperlink{database_8cpp_ab6300234f570c0b9eca5779c9560c13e}{f3}} (double x, double y)
+\item 
+double \doxymbox{\hyperlink{database_8cpp_a51eb328fbda6534f9f1243412c9913e3}{exact3}} (double x)
+\item 
+double \doxymbox{\hyperlink{database_8cpp_a6d641378ccfd84d4a6231632a3f21311}{f11}} (double x, int segment)
+\item 
+double \doxymbox{\hyperlink{database_8cpp_a533e7b832fc06f1f4158c8855a0cf26a}{f22}} (double x, int segment)
+\item 
+double \doxymbox{\hyperlink{database_8cpp_a4781b30f4793ed7e43f83c17722d2a74}{f33}} (double x, int segment)
+\end{DoxyCompactItemize}
+
+
+\label{database_8cpp_doc-func-members}
+\Hypertarget{database_8cpp_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{database_8cpp_a3cb9cd515ce2601173ed533ff3906b36}\index{database.cpp@{database.cpp}!exact1@{exact1}}
+\index{exact1@{exact1}!database.cpp@{database.cpp}}
+\doxysubsubsection{\texorpdfstring{exact1()}{exact1()}}
+{\footnotesize\ttfamily \label{database_8cpp_a3cb9cd515ce2601173ed533ff3906b36} 
+double exact1 (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{database_8cpp_a1d23b9b7bc7e1a268628b445853a9474}\index{database.cpp@{database.cpp}!exact2@{exact2}}
+\index{exact2@{exact2}!database.cpp@{database.cpp}}
+\doxysubsubsection{\texorpdfstring{exact2()}{exact2()}}
+{\footnotesize\ttfamily \label{database_8cpp_a1d23b9b7bc7e1a268628b445853a9474} 
+double exact2 (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{database_8cpp_a51eb328fbda6534f9f1243412c9913e3}\index{database.cpp@{database.cpp}!exact3@{exact3}}
+\index{exact3@{exact3}!database.cpp@{database.cpp}}
+\doxysubsubsection{\texorpdfstring{exact3()}{exact3()}}
+{\footnotesize\ttfamily \label{database_8cpp_a51eb328fbda6534f9f1243412c9913e3} 
+double exact3 (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{database_8cpp_a669a1a1611a633e55da6b01c045a2e86}\index{database.cpp@{database.cpp}!f1@{f1}}
+\index{f1@{f1}!database.cpp@{database.cpp}}
+\doxysubsubsection{\texorpdfstring{f1()}{f1()}}
+{\footnotesize\ttfamily \label{database_8cpp_a669a1a1611a633e55da6b01c045a2e86} 
+double f1 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{database_8cpp_a6d641378ccfd84d4a6231632a3f21311}\index{database.cpp@{database.cpp}!f11@{f11}}
+\index{f11@{f11}!database.cpp@{database.cpp}}
+\doxysubsubsection{\texorpdfstring{f11()}{f11()}}
+{\footnotesize\ttfamily \label{database_8cpp_a6d641378ccfd84d4a6231632a3f21311} 
+double f11 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{int}]{segment}{}\end{DoxyParamCaption})}
+
+\Hypertarget{database_8cpp_a0ab7b11e725283300601754ad98a9eff}\index{database.cpp@{database.cpp}!f2@{f2}}
+\index{f2@{f2}!database.cpp@{database.cpp}}
+\doxysubsubsection{\texorpdfstring{f2()}{f2()}}
+{\footnotesize\ttfamily \label{database_8cpp_a0ab7b11e725283300601754ad98a9eff} 
+double f2 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{database_8cpp_a533e7b832fc06f1f4158c8855a0cf26a}\index{database.cpp@{database.cpp}!f22@{f22}}
+\index{f22@{f22}!database.cpp@{database.cpp}}
+\doxysubsubsection{\texorpdfstring{f22()}{f22()}}
+{\footnotesize\ttfamily \label{database_8cpp_a533e7b832fc06f1f4158c8855a0cf26a} 
+double f22 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{int}]{segment}{}\end{DoxyParamCaption})}
+
+\Hypertarget{database_8cpp_ab6300234f570c0b9eca5779c9560c13e}\index{database.cpp@{database.cpp}!f3@{f3}}
+\index{f3@{f3}!database.cpp@{database.cpp}}
+\doxysubsubsection{\texorpdfstring{f3()}{f3()}}
+{\footnotesize\ttfamily \label{database_8cpp_ab6300234f570c0b9eca5779c9560c13e} 
+double f3 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{database_8cpp_a4781b30f4793ed7e43f83c17722d2a74}\index{database.cpp@{database.cpp}!f33@{f33}}
+\index{f33@{f33}!database.cpp@{database.cpp}}
+\doxysubsubsection{\texorpdfstring{f33()}{f33()}}
+{\footnotesize\ttfamily \label{database_8cpp_a4781b30f4793ed7e43f83c17722d2a74} 
+double f33 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{int}]{segment}{}\end{DoxyParamCaption})}
+

@@ -32,3 +32,6 @@ HEADERS += \
     database.h \
     mytcpserver.h \
     parsing.h
+
+DISTFILES += \
+    Doxyfile

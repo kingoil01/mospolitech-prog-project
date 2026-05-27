@@ -1,0 +1,882 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Qt Server Project: Класс Database</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">My Qt Server Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('class_database.html','','class_database-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс Database</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Класс-синглтон для управления подключением к базе данных SQLite и выполнения вычислений.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="database_8h_source.html">database.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:Database:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_database.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a84d399a2ad58d69daab9b05330e1316d" id="r_a84d399a2ad58d69daab9b05330e1316d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a84d399a2ad58d69daab9b05330e1316d">~Database</a> ()</td></tr>
+<tr class="memdesc:a84d399a2ad58d69daab9b05330e1316d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Деструктор. Закрывает соединение с базой данных.  <br /></td></tr>
+<tr class="memitem:adeb7c108606dbbf659060a0a4d56a5ce" id="r_adeb7c108606dbbf659060a0a4d56a5ce"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#adeb7c108606dbbf659060a0a4d56a5ce">openDatabase</a> (const QString &amp;dbName)</td></tr>
+<tr class="memdesc:adeb7c108606dbbf659060a0a4d56a5ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Открывает соединение с файлом базы данных.  <br /></td></tr>
+<tr class="memitem:a46102d6a468364377fbb410eb1866897" id="r_a46102d6a468364377fbb410eb1866897"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a46102d6a468364377fbb410eb1866897">closeDatabase</a> ()</td></tr>
+<tr class="memdesc:a46102d6a468364377fbb410eb1866897"><td class="mdescLeft">&#160;</td><td class="mdescRight">Закрывает текущее соединение с базой данных.  <br /></td></tr>
+<tr class="memitem:a571f9128e8207b0e2fc4b1a06af60a20" id="r_a571f9128e8207b0e2fc4b1a06af60a20"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a571f9128e8207b0e2fc4b1a06af60a20">createTables</a> ()</td></tr>
+<tr class="memdesc:a571f9128e8207b0e2fc4b1a06af60a20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создает таблицы 'users' и 'tasks', если они отсутствуют.  <br /></td></tr>
+<tr class="memitem:ad1360facb704fff4380862ec8cb89f3d" id="r_ad1360facb704fff4380862ec8cb89f3d"><td class="memItemLeft">QString&#160;</td><td class="memItemRight"><a class="el" href="#ad1360facb704fff4380862ec8cb89f3d">registerUser</a> (const QString &amp;login, const QString &amp;pass, const QString &amp;email)</td></tr>
+<tr class="memdesc:ad1360facb704fff4380862ec8cb89f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Регистрирует нового пользователя с валидацией входных данных.  <br /></td></tr>
+<tr class="memitem:a59e51bfa1d5d8124c588e19a1d6c2421" id="r_a59e51bfa1d5d8124c588e19a1d6c2421"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a59e51bfa1d5d8124c588e19a1d6c2421">authoUser</a> (const QString &amp;login, const QString &amp;pass)</td></tr>
+<tr class="memdesc:a59e51bfa1d5d8124c588e19a1d6c2421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Аутентифицирует пользователя по логину и паролю.  <br /></td></tr>
+<tr class="memitem:adc079c2b6c3a2407ca8d1717b5ec98b2" id="r_adc079c2b6c3a2407ca8d1717b5ec98b2"><td class="memItemLeft">QString&#160;</td><td class="memItemRight"><a class="el" href="#adc079c2b6c3a2407ca8d1717b5ec98b2">stataUser</a> (const QString &amp;login)</td></tr>
+<tr class="memdesc:adc079c2b6c3a2407ca8d1717b5ec98b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает статистику выполнения задач пользователя.  <br /></td></tr>
+<tr class="memitem:a7cda55b24e3c8a6eddf99493171156ef" id="r_a7cda55b24e3c8a6eddf99493171156ef"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a7cda55b24e3c8a6eddf99493171156ef">saveTaskResult</a> (const QString &amp;login, int taskNum, QString result)</td></tr>
+<tr class="memdesc:a7cda55b24e3c8a6eddf99493171156ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохраняет результат (статус выполнения) конкретной задачи в базу данных.  <br /></td></tr>
+<tr class="memitem:adcf4efb29b889e7412fd4551a66b0e9c" id="r_adcf4efb29b889e7412fd4551a66b0e9c"><td class="memItemLeft">QString&#160;</td><td class="memItemRight"><a class="el" href="#adcf4efb29b889e7412fd4551a66b0e9c">get_Task1</a> ()</td></tr>
+<tr class="memdesc:adcf4efb29b889e7412fd4551a66b0e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Генерирует текст и выбирает случайный вариант для Задачи 1 (Графы).  <br /></td></tr>
+<tr class="memitem:aa49cd34f08a50375b3407cd70d876c6e" id="r_aa49cd34f08a50375b3407cd70d876c6e"><td class="memItemLeft">QString&#160;</td><td class="memItemRight"><a class="el" href="#aa49cd34f08a50375b3407cd70d876c6e">get_Task2</a> ()</td></tr>
+<tr class="memdesc:aa49cd34f08a50375b3407cd70d876c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Генерирует текст и выбирает случайный вариант для Задачи 2 (Метод Симпсона).  <br /></td></tr>
+<tr class="memitem:a86b8a52fe3c4994ff23b7da06ab3da4a" id="r_a86b8a52fe3c4994ff23b7da06ab3da4a"><td class="memItemLeft">QString&#160;</td><td class="memItemRight"><a class="el" href="#a86b8a52fe3c4994ff23b7da06ab3da4a">get_Task3</a> ()</td></tr>
+<tr class="memdesc:a86b8a52fe3c4994ff23b7da06ab3da4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Генерирует текст и выбирает случайный вариант для Задачи 3 (Метод Эйлера).  <br /></td></tr>
+<tr class="memitem:a507ce4307fe8ef594b4664ce0ddd14ea" id="r_a507ce4307fe8ef594b4664ce0ddd14ea"><td class="memItemLeft">QString&#160;</td><td class="memItemRight"><a class="el" href="#a507ce4307fe8ef594b4664ce0ddd14ea">get_Task4</a> ()</td></tr>
+<tr class="memdesc:a507ce4307fe8ef594b4664ce0ddd14ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Генерирует текст и выбирает случайный вариант для Задачи 4 (Интеграл с разрывом).  <br /></td></tr>
+<tr class="memitem:a5a0551f277993741fd97e6c3b1ce32e8" id="r_a5a0551f277993741fd97e6c3b1ce32e8"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a5a0551f277993741fd97e6c3b1ce32e8">calculateShortestPath</a> (int taskIndex)</td></tr>
+<tr class="memdesc:a5a0551f277993741fd97e6c3b1ce32e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Рассчитывает эталонный ответ для задачи на основе выбранного случайного индекса.  <br /></td></tr>
+<tr class="memitem:a0f279744b5b075b898c030d6dfee27b1" id="r_a0f279744b5b075b898c030d6dfee27b1"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a0f279744b5b075b898c030d6dfee27b1">bfsShortestPath</a> (int vertexCount, const QVector&lt; QPair&lt; int, int &gt; &gt; &amp;edges, int start, int end)</td></tr>
+<tr class="memdesc:a0f279744b5b075b898c030d6dfee27b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Поиск кратчайшего пути в неразмеченном графе методом обхода в ширину (BFS).  <br /></td></tr>
+<tr class="memitem:ac0cbb1303ebb33641908660cab107bdd" id="r_ac0cbb1303ebb33641908660cab107bdd"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#ac0cbb1303ebb33641908660cab107bdd">simpsonError</a> (const QVector&lt; double &gt; &amp;coeffs, double a, double b)</td></tr>
+<tr class="memdesc:ac0cbb1303ebb33641908660cab107bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вычисляет абсолютную погрешность метода Симпсона для полинома по сравнению с точным интегралом.  <br /></td></tr>
+<tr class="memitem:ab679250f6143926e651847a2982957b0" id="r_ab679250f6143926e651847a2982957b0"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#ab679250f6143926e651847a2982957b0">eulerError</a> (const <a class="el" href="struct_euler_task.html">EulerTask</a> &amp;task)</td></tr>
+<tr class="memdesc:ab679250f6143926e651847a2982957b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вычисляет абсолютную погрешность метода Эйлера на первом шаге для ОДУ.  <br /></td></tr>
+<tr class="memitem:a6afd616624cf2d042fbaa492322c65bf" id="r_a6afd616624cf2d042fbaa492322c65bf"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a6afd616624cf2d042fbaa492322c65bf">discontinuityRectangleIntegral</a> (double a, double b, const QVector&lt; double &gt; &amp;breakpoints, double(*func)(double x, int segmentIndex))</td></tr>
+<tr class="memdesc:a6afd616624cf2d042fbaa492322c65bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Интегрирует разрывную функцию методом прямоугольников по непрерывным сегментам.  <br /></td></tr>
+<tr class="memitem:a1817503170d181a0168d69fc5b1320be" id="r_a1817503170d181a0168d69fc5b1320be"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a1817503170d181a0168d69fc5b1320be">f1</a> (double x, double y)</td></tr>
+<tr class="memitem:aecac1cad61f0451058f96ea6cc14cdc4" id="r_aecac1cad61f0451058f96ea6cc14cdc4"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#aecac1cad61f0451058f96ea6cc14cdc4">exact1</a> (double x)</td></tr>
+<tr class="memitem:a744906b16e4732d28e93d17d18ff7774" id="r_a744906b16e4732d28e93d17d18ff7774"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a744906b16e4732d28e93d17d18ff7774">f2</a> (double x, double y)</td></tr>
+<tr class="memitem:a7172d259ca99b0d66ed40e4548170077" id="r_a7172d259ca99b0d66ed40e4548170077"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a7172d259ca99b0d66ed40e4548170077">exact2</a> (double x)</td></tr>
+<tr class="memitem:a9eae525830e7f0752e2118294c86b191" id="r_a9eae525830e7f0752e2118294c86b191"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a9eae525830e7f0752e2118294c86b191">f3</a> (double x, double y)</td></tr>
+<tr class="memitem:a25be0c546b83da54dcb060846d3ec55d" id="r_a25be0c546b83da54dcb060846d3ec55d"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a25be0c546b83da54dcb060846d3ec55d">exact3</a> (double x)</td></tr>
+<tr class="memitem:af9e61cdbcd1abe74f81836c36821609f" id="r_af9e61cdbcd1abe74f81836c36821609f"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#af9e61cdbcd1abe74f81836c36821609f">f11</a> (double x, int segment)</td></tr>
+<tr class="memitem:a859e4085326b44209d73fb324303fb7d" id="r_a859e4085326b44209d73fb324303fb7d"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a859e4085326b44209d73fb324303fb7d">f22</a> (double x, int segment)</td></tr>
+<tr class="memitem:a1d976a263b995908f297e870b40cc4d2" id="r_a1d976a263b995908f297e870b40cc4d2"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a1d976a263b995908f297e870b40cc4d2">f33</a> (double x, int segment)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Открытые статические члены</h2></td></tr>
+<tr class="memitem:a5a3b028f980a577ea0b809eb92312761" id="r_a5a3b028f980a577ea0b809eb92312761"><td class="memItemLeft">static <a class="el" href="class_database.html">Database</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a5a3b028f980a577ea0b809eb92312761">getInstance</a> ()</td></tr>
+<tr class="memdesc:a5a3b028f980a577ea0b809eb92312761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает единственный экземпляр класса <a class="el" href="class_database.html" title="Класс-синглтон для управления подключением к базе данных SQLite и выполнения вычислений.">Database</a>.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Класс-синглтон для управления подключением к базе данных SQLite и выполнения вычислений. </p>
+<p>Обеспечивает авторизацию, регистрацию, хранение прогресса пользователей, а также содержит математическую логику для генерации и проверки серверных задач. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="a84d399a2ad58d69daab9b05330e1316d" name="a84d399a2ad58d69daab9b05330e1316d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84d399a2ad58d69daab9b05330e1316d">&#9670;&#160;</a></span>~Database()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Database::~Database </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Деструктор. Закрывает соединение с базой данных. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="a59e51bfa1d5d8124c588e19a1d6c2421" name="a59e51bfa1d5d8124c588e19a1d6c2421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59e51bfa1d5d8124c588e19a1d6c2421">&#9670;&#160;</a></span>authoUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Database::authoUser </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>login</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>pass</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Аутентифицирует пользователя по логину и паролю. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин пользователя. </td></tr>
+    <tr><td class="paramname">pass</td><td>Пароль пользователя. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если учетные данные верны, иначе false. </dd></dl>
+
+</div>
+</div>
+<a id="a0f279744b5b075b898c030d6dfee27b1" name="a0f279744b5b075b898c030d6dfee27b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f279744b5b075b898c030d6dfee27b1">&#9670;&#160;</a></span>bfsShortestPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Database::bfsShortestPath </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>vertexCount</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QVector&lt; QPair&lt; int, int &gt; &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>edges</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>end</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Поиск кратчайшего пути в неразмеченном графе методом обхода в ширину (BFS). </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vertexCount</td><td>Количество вершин в графе. </td></tr>
+    <tr><td class="paramname">edges</td><td>Список ребер графа (пары смежных вершин). </td></tr>
+    <tr><td class="paramname">start</td><td>Начальная вершина. </td></tr>
+    <tr><td class="paramname">end</td><td>Конечная вершина. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество шагов (ребер) в кратчайшем пути, или -1, если путь не найден. </dd></dl>
+
+</div>
+</div>
+<a id="a5a0551f277993741fd97e6c3b1ce32e8" name="a5a0551f277993741fd97e6c3b1ce32e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a0551f277993741fd97e6c3b1ce32e8">&#9670;&#160;</a></span>calculateShortestPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::calculateShortestPath </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>taskIndex</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Рассчитывает эталонный ответ для задачи на основе выбранного случайного индекса. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">taskIndex</td><td>Номер задачи (1-4). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Численный результат (расстояние, погрешность или значение интеграла). </dd></dl>
+
+</div>
+</div>
+<a id="a46102d6a468364377fbb410eb1866897" name="a46102d6a468364377fbb410eb1866897"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46102d6a468364377fbb410eb1866897">&#9670;&#160;</a></span>closeDatabase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Database::closeDatabase </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Закрывает текущее соединение с базой данных. </p>
+
+</div>
+</div>
+<a id="a571f9128e8207b0e2fc4b1a06af60a20" name="a571f9128e8207b0e2fc4b1a06af60a20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a571f9128e8207b0e2fc4b1a06af60a20">&#9670;&#160;</a></span>createTables()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Database::createTables </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создает таблицы 'users' и 'tasks', если они отсутствуют. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если таблицы успешно созданы/существуют, иначе false. </dd></dl>
+
+</div>
+</div>
+<a id="a6afd616624cf2d042fbaa492322c65bf" name="a6afd616624cf2d042fbaa492322c65bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6afd616624cf2d042fbaa492322c65bf">&#9670;&#160;</a></span>discontinuityRectangleIntegral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::discontinuityRectangleIntegral </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QVector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>breakpoints</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double(*</td>          <td class="paramname"><span class="paramname"><em>func&#160;</em></span>)(double x, int segmentIndex)&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Интегрирует разрывную функцию методом прямоугольников по непрерывным сегментам. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Левая граница интегрирования. </td></tr>
+    <tr><td class="paramname">b</td><td>Правая граница интегрирования. </td></tr>
+    <tr><td class="paramname">breakpoints</td><td>Вектор точек разрыва внутри отрезка. </td></tr>
+    <tr><td class="paramname">func</td><td>Указатель на функцию, принимающую x и индекс текущего непрерывного сегмента. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Значение интеграла, округленное до 2 знаков после запятой. </dd></dl>
+
+</div>
+</div>
+<a id="ab679250f6143926e651847a2982957b0" name="ab679250f6143926e651847a2982957b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab679250f6143926e651847a2982957b0">&#9670;&#160;</a></span>eulerError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::eulerError </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_euler_task.html">EulerTask</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>task</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вычисляет абсолютную погрешность метода Эйлера на первом шаге для ОДУ. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">task</td><td>Структура с параметрами задачи Эйлера. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Абсолютная погрешность, округленная до 2 знаков после запятой. </dd></dl>
+
+</div>
+</div>
+<a id="aecac1cad61f0451058f96ea6cc14cdc4" name="aecac1cad61f0451058f96ea6cc14cdc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecac1cad61f0451058f96ea6cc14cdc4">&#9670;&#160;</a></span>exact1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::exact1 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7172d259ca99b0d66ed40e4548170077" name="a7172d259ca99b0d66ed40e4548170077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7172d259ca99b0d66ed40e4548170077">&#9670;&#160;</a></span>exact2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::exact2 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25be0c546b83da54dcb060846d3ec55d" name="a25be0c546b83da54dcb060846d3ec55d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25be0c546b83da54dcb060846d3ec55d">&#9670;&#160;</a></span>exact3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::exact3 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1817503170d181a0168d69fc5b1320be" name="a1817503170d181a0168d69fc5b1320be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1817503170d181a0168d69fc5b1320be">&#9670;&#160;</a></span>f1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::f1 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9e61cdbcd1abe74f81836c36821609f" name="af9e61cdbcd1abe74f81836c36821609f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9e61cdbcd1abe74f81836c36821609f">&#9670;&#160;</a></span>f11()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::f11 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>segment</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a744906b16e4732d28e93d17d18ff7774" name="a744906b16e4732d28e93d17d18ff7774"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a744906b16e4732d28e93d17d18ff7774">&#9670;&#160;</a></span>f2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::f2 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a859e4085326b44209d73fb324303fb7d" name="a859e4085326b44209d73fb324303fb7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a859e4085326b44209d73fb324303fb7d">&#9670;&#160;</a></span>f22()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::f22 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>segment</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9eae525830e7f0752e2118294c86b191" name="a9eae525830e7f0752e2118294c86b191"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eae525830e7f0752e2118294c86b191">&#9670;&#160;</a></span>f3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::f3 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d976a263b995908f297e870b40cc4d2" name="a1d976a263b995908f297e870b40cc4d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d976a263b995908f297e870b40cc4d2">&#9670;&#160;</a></span>f33()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::f33 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>segment</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adcf4efb29b889e7412fd4551a66b0e9c" name="adcf4efb29b889e7412fd4551a66b0e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcf4efb29b889e7412fd4551a66b0e9c">&#9670;&#160;</a></span>get_Task1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Database::get_Task1 </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Генерирует текст и выбирает случайный вариант для Задачи 1 (Графы). </p>
+
+</div>
+</div>
+<a id="aa49cd34f08a50375b3407cd70d876c6e" name="aa49cd34f08a50375b3407cd70d876c6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa49cd34f08a50375b3407cd70d876c6e">&#9670;&#160;</a></span>get_Task2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Database::get_Task2 </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Генерирует текст и выбирает случайный вариант для Задачи 2 (Метод Симпсона). </p>
+
+</div>
+</div>
+<a id="a86b8a52fe3c4994ff23b7da06ab3da4a" name="a86b8a52fe3c4994ff23b7da06ab3da4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86b8a52fe3c4994ff23b7da06ab3da4a">&#9670;&#160;</a></span>get_Task3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Database::get_Task3 </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Генерирует текст и выбирает случайный вариант для Задачи 3 (Метод Эйлера). </p>
+
+</div>
+</div>
+<a id="a507ce4307fe8ef594b4664ce0ddd14ea" name="a507ce4307fe8ef594b4664ce0ddd14ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a507ce4307fe8ef594b4664ce0ddd14ea">&#9670;&#160;</a></span>get_Task4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Database::get_Task4 </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Генерирует текст и выбирает случайный вариант для Задачи 4 (Интеграл с разрывом). </p>
+
+</div>
+</div>
+<a id="a5a3b028f980a577ea0b809eb92312761" name="a5a3b028f980a577ea0b809eb92312761"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3b028f980a577ea0b809eb92312761">&#9670;&#160;</a></span>getInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_database.html">Database</a> * Database::getInstance </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает единственный экземпляр класса <a class="el" href="class_database.html" title="Класс-синглтон для управления подключением к базе данных SQLite и выполнения вычислений.">Database</a>. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Указатель на экземпляр <a class="el" href="class_database.html" title="Класс-синглтон для управления подключением к базе данных SQLite и выполнения вычислений.">Database</a>. </dd></dl>
+
+</div>
+</div>
+<a id="adeb7c108606dbbf659060a0a4d56a5ce" name="adeb7c108606dbbf659060a0a4d56a5ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeb7c108606dbbf659060a0a4d56a5ce">&#9670;&#160;</a></span>openDatabase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Database::openDatabase </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>dbName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Открывает соединение с файлом базы данных. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dbName</td><td>Имя файла базы данных. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если соединение успешно открыто, иначе false. </dd></dl>
+
+</div>
+</div>
+<a id="ad1360facb704fff4380862ec8cb89f3d" name="ad1360facb704fff4380862ec8cb89f3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1360facb704fff4380862ec8cb89f3d">&#9670;&#160;</a></span>registerUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Database::registerUser </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>login</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>pass</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>email</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Регистрирует нового пользователя с валидацией входных данных. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин (3-10 символов, без пробелов, только A-Z, a-z, 0-9, _) </td></tr>
+    <tr><td class="paramname">pass</td><td>Пароль (6-10 символов, без пробелов) </td></tr>
+    <tr><td class="paramname">email</td><td>Адрес электронной почты (должен содержать '@') </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Пустая строка в случае успеха, или текст ошибки при провале валидации/дублировании логина. </dd></dl>
+
+</div>
+</div>
+<a id="a7cda55b24e3c8a6eddf99493171156ef" name="a7cda55b24e3c8a6eddf99493171156ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cda55b24e3c8a6eddf99493171156ef">&#9670;&#160;</a></span>saveTaskResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Database::saveTaskResult </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>login</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>taskNum</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString</td>          <td class="paramname"><span class="paramname"><em>result</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сохраняет результат (статус выполнения) конкретной задачи в базу данных. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин пользователя. </td></tr>
+    <tr><td class="paramname">taskNum</td><td>Номер задачи (1-4). </td></tr>
+    <tr><td class="paramname">result</td><td>Статус выполнения (например, "1" — решено, "0" — нет). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если обновление прошло успешно, иначе false. </dd></dl>
+
+</div>
+</div>
+<a id="ac0cbb1303ebb33641908660cab107bdd" name="ac0cbb1303ebb33641908660cab107bdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0cbb1303ebb33641908660cab107bdd">&#9670;&#160;</a></span>simpsonError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Database::simpsonError </td>
+          <td>(</td>
+          <td class="paramtype">const QVector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>coeffs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вычисляет абсолютную погрешность метода Симпсона для полинома по сравнению с точным интегралом. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coeffs</td><td>Вектор коэффициентов полинома (от старшей степени к младшей). </td></tr>
+    <tr><td class="paramname">a</td><td>Левая граница интегрирования. </td></tr>
+    <tr><td class="paramname">b</td><td>Правая граница интегрирования. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Абсолютная величина погрешности. </dd></dl>
+
+</div>
+</div>
+<a id="adc079c2b6c3a2407ca8d1717b5ec98b2" name="adc079c2b6c3a2407ca8d1717b5ec98b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc079c2b6c3a2407ca8d1717b5ec98b2">&#9670;&#160;</a></span>stataUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Database::stataUser </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>login</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает статистику выполнения задач пользователя. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин пользователя. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка формата "X/4", где X — количество решенных задач, либо сообщение об ошибке. </dd></dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="database_8h_source.html">database.h</a></li>
+<li><a class="el" href="database_8cpp.html">database.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_database.html">Database</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>
