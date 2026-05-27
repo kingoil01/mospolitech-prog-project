@@ -31,7 +31,6 @@ private slots:
         db->openDatabase(dbName);
         db->createTables();
 
-        // Пароль изменен на "123456" (6 символов), чтобы пройти валидацию
         QString result = db->registerUser("testuser", "123456", "test@mail.ru");
         QVERIFY2(result.isEmpty(), QString("Регистрация не удалась: %1").arg(result).toUtf8());
 
