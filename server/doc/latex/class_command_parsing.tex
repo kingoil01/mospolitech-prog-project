@@ -1,0 +1,104 @@
+\doxysection{Класс Command\+Parsing}
+\hypertarget{class_command_parsing}{}\label{class_command_parsing}\index{CommandParsing@{CommandParsing}}
+
+
+Класс бизнес-\/логики для парсинга и обработки текстовых протокольных команд от клиентов.  
+
+
+
+
+{\ttfamily \+\#include $<$parsing.\+h$>$}
+
+Граф наследования:\+Command\+Parsing:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_command_parsing}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_command_parsing_a534a09c388a104b059071f8298e4c646}{Command\+Parsing}} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор компонента парсинга. \end{DoxyCompactList}\item 
+QString \doxymbox{\hyperlink{class_command_parsing_affec5eda00bdaa7821c65e1c4d044cca}{Command}} (const QString \&command)
+\begin{DoxyCompactList}\small\item\em Основной метод диспетчеризации строковых команд. \end{DoxyCompactList}\item 
+QString \doxymbox{\hyperlink{class_command_parsing_a078df22ef496ce92fd4372357ff94424}{handle\+Submit}} (QString\+List \&parts, QString login)
+\begin{DoxyCompactList}\small\item\em Обрабатывает отправку ответов на задачи пользователем. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс бизнес-\/логики для парсинга и обработки текстовых протокольных команд от клиентов. 
+
+Принимает сырые строки команд, разбивает их на параметры, осуществляет необходимую диспетчеризацию в методы базы данных или вычислительные функции и формирует текстовый ответ. 
+
+\label{class_command_parsing_doc-constructors}
+\Hypertarget{class_command_parsing_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_command_parsing_a534a09c388a104b059071f8298e4c646}\index{CommandParsing@{CommandParsing}!CommandParsing@{CommandParsing}}
+\index{CommandParsing@{CommandParsing}!CommandParsing@{CommandParsing}}
+\doxysubsubsection{\texorpdfstring{CommandParsing()}{CommandParsing()}}
+{\footnotesize\ttfamily \label{class_command_parsing_a534a09c388a104b059071f8298e4c646} 
+Command\+Parsing::\+\+Command\+Parsing (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор компонента парсинга. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em parent} & Родительский объект QObject. \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_command_parsing_doc-func-members}
+\Hypertarget{class_command_parsing_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_command_parsing_affec5eda00bdaa7821c65e1c4d044cca}\index{CommandParsing@{CommandParsing}!Command@{Command}}
+\index{Command@{Command}!CommandParsing@{CommandParsing}}
+\doxysubsubsection{\texorpdfstring{Command()}{Command()}}
+{\footnotesize\ttfamily \label{class_command_parsing_affec5eda00bdaa7821c65e1c4d044cca} 
+QString Command\+Parsing::\+\+Command (\begin{DoxyParamCaption}\item[{const QString \&}]{command}{}\end{DoxyParamCaption})}
+
+
+
+Основной метод диспетчеризации строковых команд. 
+
+
+\begin{DoxyItemize}
+\item Поддерживает обработку команд авторизации (auth), регистрации (reg), запроса статистики (stata) и эхо-\/ответов (Echo).
+\item 
+\begin{DoxyParams}{Аргументы}
+{\em command} & Полная строка команды с аргументами, разделенными пробелами. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Строка ответа, готовая к отправке клиенту по сети. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{class_command_parsing_a078df22ef496ce92fd4372357ff94424}\index{CommandParsing@{CommandParsing}!handleSubmit@{handleSubmit}}
+\index{handleSubmit@{handleSubmit}!CommandParsing@{CommandParsing}}
+\doxysubsubsection{\texorpdfstring{handleSubmit()}{handleSubmit()}}
+{\footnotesize\ttfamily \label{class_command_parsing_a078df22ef496ce92fd4372357ff94424} 
+QString Command\+Parsing::\+handle\+Submit (\begin{DoxyParamCaption}\item[{QString\+List \&}]{parts}{, }\item[{QString}]{login}{}\end{DoxyParamCaption})}
+
+
+
+Обрабатывает отправку ответов на задачи пользователем. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em parts} & Расплитованный список аргументов команды (номер задачи, ответ). \\
+\hline
+{\em login} & Логин пользователя, отправившего ответ. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат проверки ("{}Верно"{}, "{}Неверно"{} или сообщение об ошибке). 
+\end{DoxyReturn}
+
+
+Объявления и описания членов классов находятся в файлах:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{parsing_8h}{parsing.\+h}}\item 
+\doxymbox{\hyperlink{parsing_8cpp}{parsing.\+cpp}}\end{DoxyCompactItemize}

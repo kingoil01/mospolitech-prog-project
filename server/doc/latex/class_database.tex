@@ -1,0 +1,444 @@
+\doxysection{Класс Database}
+\hypertarget{class_database}{}\label{class_database}\index{Database@{Database}}
+
+
+Класс-\/синглтон для управления подключением к базе данных SQLite и выполнения вычислений.  
+
+
+
+
+{\ttfamily \+\#include $<$database.\+h$>$}
+
+Граф наследования:\+Database:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_database}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_database_a84d399a2ad58d69daab9b05330e1316d}{\texorpdfstring{$\sim$}{\string~}\+Database}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор. Закрывает соединение с базой данных. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_database_adeb7c108606dbbf659060a0a4d56a5ce}{open\+Database}} (const QString \&db\+Name)
+\begin{DoxyCompactList}\small\item\em Открывает соединение с файлом базы данных. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_database_a46102d6a468364377fbb410eb1866897}{close\+Database}} ()
+\begin{DoxyCompactList}\small\item\em Закрывает текущее соединение с базой данных. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_database_a571f9128e8207b0e2fc4b1a06af60a20}{create\+Tables}} ()
+\begin{DoxyCompactList}\small\item\em Создает таблицы \textquotesingle{}users\textquotesingle{} и \textquotesingle{}tasks\textquotesingle{}, если они отсутствуют. \end{DoxyCompactList}\item 
+QString \doxymbox{\hyperlink{class_database_ad1360facb704fff4380862ec8cb89f3d}{register\+User}} (const QString \&login, const QString \&pass, const QString \&email)
+\begin{DoxyCompactList}\small\item\em Регистрирует нового пользователя с валидацией входных данных. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_database_a59e51bfa1d5d8124c588e19a1d6c2421}{autho\+User}} (const QString \&login, const QString \&pass)
+\begin{DoxyCompactList}\small\item\em Аутентифицирует пользователя по логину и паролю. \end{DoxyCompactList}\item 
+QString \doxymbox{\hyperlink{class_database_adc079c2b6c3a2407ca8d1717b5ec98b2}{stata\+User}} (const QString \&login)
+\begin{DoxyCompactList}\small\item\em Возвращает статистику выполнения задач пользователя. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_database_a7cda55b24e3c8a6eddf99493171156ef}{save\+Task\+Result}} (const QString \&login, int task\+Num, QString result)
+\begin{DoxyCompactList}\small\item\em Сохраняет результат (статус выполнения) конкретной задачи в базу данных. \end{DoxyCompactList}\item 
+QString \doxymbox{\hyperlink{class_database_adcf4efb29b889e7412fd4551a66b0e9c}{get\+\_\+\+Task1}} ()
+\begin{DoxyCompactList}\small\item\em Генерирует текст и выбирает случайный вариант для Задачи 1 (Графы). \end{DoxyCompactList}\item 
+QString \doxymbox{\hyperlink{class_database_aa49cd34f08a50375b3407cd70d876c6e}{get\+\_\+\+Task2}} ()
+\begin{DoxyCompactList}\small\item\em Генерирует текст и выбирает случайный вариант для Задачи 2 (Метод Симпсона). \end{DoxyCompactList}\item 
+QString \doxymbox{\hyperlink{class_database_a86b8a52fe3c4994ff23b7da06ab3da4a}{get\+\_\+\+Task3}} ()
+\begin{DoxyCompactList}\small\item\em Генерирует текст и выбирает случайный вариант для Задачи 3 (Метод Эйлера). \end{DoxyCompactList}\item 
+QString \doxymbox{\hyperlink{class_database_a507ce4307fe8ef594b4664ce0ddd14ea}{get\+\_\+\+Task4}} ()
+\begin{DoxyCompactList}\small\item\em Генерирует текст и выбирает случайный вариант для Задачи 4 (Интеграл с разрывом). \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_database_a5a0551f277993741fd97e6c3b1ce32e8}{calculate\+Shortest\+Path}} (int task\+Index)
+\begin{DoxyCompactList}\small\item\em Рассчитывает эталонный ответ для задачи на основе выбранного случайного индекса. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_database_a0f279744b5b075b898c030d6dfee27b1}{bfs\+Shortest\+Path}} (int vertex\+Count, const QVector$<$ QPair$<$ int, int $>$ $>$ \&edges, int start, int end)
+\begin{DoxyCompactList}\small\item\em Поиск кратчайшего пути в неразмеченном графе методом обхода в ширину (BFS). \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_database_ac0cbb1303ebb33641908660cab107bdd}{simpson\+Error}} (const QVector$<$ double $>$ \&coeffs, double a, double b)
+\begin{DoxyCompactList}\small\item\em Вычисляет абсолютную погрешность метода Симпсона для полинома по сравнению с точным интегралом. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_database_ab679250f6143926e651847a2982957b0}{euler\+Error}} (const \doxymbox{\hyperlink{struct_euler_task}{Euler\+Task}} \&task)
+\begin{DoxyCompactList}\small\item\em Вычисляет абсолютную погрешность метода Эйлера на первом шаге для ОДУ. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_database_a6afd616624cf2d042fbaa492322c65bf}{discontinuity\+Rectangle\+Integral}} (double a, double b, const QVector$<$ double $>$ \&breakpoints, double(\texorpdfstring{$\ast$}{*}func)(double x, int segment\+Index))
+\begin{DoxyCompactList}\small\item\em Интегрирует разрывную функцию методом прямоугольников по непрерывным сегментам. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_database_a1817503170d181a0168d69fc5b1320be}{f1}} (double x, double y)
+\item 
+double \doxymbox{\hyperlink{class_database_aecac1cad61f0451058f96ea6cc14cdc4}{exact1}} (double x)
+\item 
+double \doxymbox{\hyperlink{class_database_a744906b16e4732d28e93d17d18ff7774}{f2}} (double x, double y)
+\item 
+double \doxymbox{\hyperlink{class_database_a7172d259ca99b0d66ed40e4548170077}{exact2}} (double x)
+\item 
+double \doxymbox{\hyperlink{class_database_a9eae525830e7f0752e2118294c86b191}{f3}} (double x, double y)
+\item 
+double \doxymbox{\hyperlink{class_database_a25be0c546b83da54dcb060846d3ec55d}{exact3}} (double x)
+\item 
+double \doxymbox{\hyperlink{class_database_af9e61cdbcd1abe74f81836c36821609f}{f11}} (double x, int segment)
+\item 
+double \doxymbox{\hyperlink{class_database_a859e4085326b44209d73fb324303fb7d}{f22}} (double x, int segment)
+\item 
+double \doxymbox{\hyperlink{class_database_a1d976a263b995908f297e870b40cc4d2}{f33}} (double x, int segment)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_database}{Database}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_database_a5a3b028f980a577ea0b809eb92312761}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает единственный экземпляр класса \doxylink{class_database}{Database}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс-\/синглтон для управления подключением к базе данных SQLite и выполнения вычислений. 
+
+Обеспечивает авторизацию, регистрацию, хранение прогресса пользователей, а также содержит математическую логику для генерации и проверки серверных задач. 
+
+\label{class_database_doc-constructors}
+\Hypertarget{class_database_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_database_a84d399a2ad58d69daab9b05330e1316d}\index{Database@{Database}!````~Database@{\texorpdfstring{$\sim$}{\string~}Database}}
+\index{````~Database@{\texorpdfstring{$\sim$}{\string~}Database}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Database()}{\string~Database()}}
+{\footnotesize\ttfamily \label{class_database_a84d399a2ad58d69daab9b05330e1316d} 
+Database::\+\texorpdfstring{$\sim$}{\string~}\+Database (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Деструктор. Закрывает соединение с базой данных. 
+
+
+
+\label{class_database_doc-func-members}
+\Hypertarget{class_database_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_database_a59e51bfa1d5d8124c588e19a1d6c2421}\index{Database@{Database}!authoUser@{authoUser}}
+\index{authoUser@{authoUser}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{authoUser()}{authoUser()}}
+{\footnotesize\ttfamily \label{class_database_a59e51bfa1d5d8124c588e19a1d6c2421} 
+bool Database::\+autho\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{login}{, }\item[{const QString \&}]{pass}{}\end{DoxyParamCaption})}
+
+
+
+Аутентифицирует пользователя по логину и паролю. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя. \\
+\hline
+{\em pass} & Пароль пользователя. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true, если учетные данные верны, иначе false. 
+\end{DoxyReturn}
+\Hypertarget{class_database_a0f279744b5b075b898c030d6dfee27b1}\index{Database@{Database}!bfsShortestPath@{bfsShortestPath}}
+\index{bfsShortestPath@{bfsShortestPath}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{bfsShortestPath()}{bfsShortestPath()}}
+{\footnotesize\ttfamily \label{class_database_a0f279744b5b075b898c030d6dfee27b1} 
+int Database::\+bfs\+Shortest\+Path (\begin{DoxyParamCaption}\item[{int}]{vertex\+Count}{, }\item[{const QVector$<$ QPair$<$ int, int $>$ $>$ \&}]{edges}{, }\item[{int}]{start}{, }\item[{int}]{end}{}\end{DoxyParamCaption})}
+
+
+
+Поиск кратчайшего пути в неразмеченном графе методом обхода в ширину (BFS). 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em vertex\+Count} & Количество вершин в графе. \\
+\hline
+{\em edges} & Список ребер графа (пары смежных вершин). \\
+\hline
+{\em start} & Начальная вершина. \\
+\hline
+{\em end} & Конечная вершина. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Количество шагов (ребер) в кратчайшем пути, или -\/1, если путь не найден. 
+\end{DoxyReturn}
+\Hypertarget{class_database_a5a0551f277993741fd97e6c3b1ce32e8}\index{Database@{Database}!calculateShortestPath@{calculateShortestPath}}
+\index{calculateShortestPath@{calculateShortestPath}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{calculateShortestPath()}{calculateShortestPath()}}
+{\footnotesize\ttfamily \label{class_database_a5a0551f277993741fd97e6c3b1ce32e8} 
+double Database::\+calculate\+Shortest\+Path (\begin{DoxyParamCaption}\item[{int}]{task\+Index}{}\end{DoxyParamCaption})}
+
+
+
+Рассчитывает эталонный ответ для задачи на основе выбранного случайного индекса. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em task\+Index} & Номер задачи (1-\/4). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Численный результат (расстояние, погрешность или значение интеграла). 
+\end{DoxyReturn}
+\Hypertarget{class_database_a46102d6a468364377fbb410eb1866897}\index{Database@{Database}!closeDatabase@{closeDatabase}}
+\index{closeDatabase@{closeDatabase}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{closeDatabase()}{closeDatabase()}}
+{\footnotesize\ttfamily \label{class_database_a46102d6a468364377fbb410eb1866897} 
+void Database::\+close\+Database (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Закрывает текущее соединение с базой данных. 
+
+\Hypertarget{class_database_a571f9128e8207b0e2fc4b1a06af60a20}\index{Database@{Database}!createTables@{createTables}}
+\index{createTables@{createTables}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{createTables()}{createTables()}}
+{\footnotesize\ttfamily \label{class_database_a571f9128e8207b0e2fc4b1a06af60a20} 
+bool Database::\+create\+Tables (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Создает таблицы \textquotesingle{}users\textquotesingle{} и \textquotesingle{}tasks\textquotesingle{}, если они отсутствуют. 
+
+\begin{DoxyReturn}{Возвращает}
+true, если таблицы успешно созданы/\+существуют, иначе false. 
+\end{DoxyReturn}
+\Hypertarget{class_database_a6afd616624cf2d042fbaa492322c65bf}\index{Database@{Database}!discontinuityRectangleIntegral@{discontinuityRectangleIntegral}}
+\index{discontinuityRectangleIntegral@{discontinuityRectangleIntegral}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{discontinuityRectangleIntegral()}{discontinuityRectangleIntegral()}}
+{\footnotesize\ttfamily \label{class_database_a6afd616624cf2d042fbaa492322c65bf} 
+double Database::\+discontinuity\+Rectangle\+Integral (\begin{DoxyParamCaption}\item[{double}]{a}{, }\item[{double}]{b}{, }\item[{const QVector$<$ double $>$ \&}]{breakpoints}{, }\item[{double(\texorpdfstring{$\ast$}{*}}]{func~}{)(double x, int segment\+Index)}\end{DoxyParamCaption})}
+
+
+
+Интегрирует разрывную функцию методом прямоугольников по непрерывным сегментам. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em a} & Левая граница интегрирования. \\
+\hline
+{\em b} & Правая граница интегрирования. \\
+\hline
+{\em breakpoints} & Вектор точек разрыва внутри отрезка. \\
+\hline
+{\em func} & Указатель на функцию, принимающую x и индекс текущего непрерывного сегмента. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Значение интеграла, округленное до 2 знаков после запятой. 
+\end{DoxyReturn}
+\Hypertarget{class_database_ab679250f6143926e651847a2982957b0}\index{Database@{Database}!eulerError@{eulerError}}
+\index{eulerError@{eulerError}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{eulerError()}{eulerError()}}
+{\footnotesize\ttfamily \label{class_database_ab679250f6143926e651847a2982957b0} 
+double Database::\+euler\+Error (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_euler_task}{Euler\+Task}} \&}]{task}{}\end{DoxyParamCaption})}
+
+
+
+Вычисляет абсолютную погрешность метода Эйлера на первом шаге для ОДУ. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em task} & Структура с параметрами задачи Эйлера. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Абсолютная погрешность, округленная до 2 знаков после запятой. 
+\end{DoxyReturn}
+\Hypertarget{class_database_aecac1cad61f0451058f96ea6cc14cdc4}\index{Database@{Database}!exact1@{exact1}}
+\index{exact1@{exact1}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{exact1()}{exact1()}}
+{\footnotesize\ttfamily \label{class_database_aecac1cad61f0451058f96ea6cc14cdc4} 
+double Database::\+exact1 (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_a7172d259ca99b0d66ed40e4548170077}\index{Database@{Database}!exact2@{exact2}}
+\index{exact2@{exact2}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{exact2()}{exact2()}}
+{\footnotesize\ttfamily \label{class_database_a7172d259ca99b0d66ed40e4548170077} 
+double Database::\+exact2 (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_a25be0c546b83da54dcb060846d3ec55d}\index{Database@{Database}!exact3@{exact3}}
+\index{exact3@{exact3}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{exact3()}{exact3()}}
+{\footnotesize\ttfamily \label{class_database_a25be0c546b83da54dcb060846d3ec55d} 
+double Database::\+exact3 (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_a1817503170d181a0168d69fc5b1320be}\index{Database@{Database}!f1@{f1}}
+\index{f1@{f1}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{f1()}{f1()}}
+{\footnotesize\ttfamily \label{class_database_a1817503170d181a0168d69fc5b1320be} 
+double Database::\+f1 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_af9e61cdbcd1abe74f81836c36821609f}\index{Database@{Database}!f11@{f11}}
+\index{f11@{f11}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{f11()}{f11()}}
+{\footnotesize\ttfamily \label{class_database_af9e61cdbcd1abe74f81836c36821609f} 
+double Database::\+f11 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{int}]{segment}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_a744906b16e4732d28e93d17d18ff7774}\index{Database@{Database}!f2@{f2}}
+\index{f2@{f2}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{f2()}{f2()}}
+{\footnotesize\ttfamily \label{class_database_a744906b16e4732d28e93d17d18ff7774} 
+double Database::\+f2 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_a859e4085326b44209d73fb324303fb7d}\index{Database@{Database}!f22@{f22}}
+\index{f22@{f22}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{f22()}{f22()}}
+{\footnotesize\ttfamily \label{class_database_a859e4085326b44209d73fb324303fb7d} 
+double Database::\+f22 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{int}]{segment}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_a9eae525830e7f0752e2118294c86b191}\index{Database@{Database}!f3@{f3}}
+\index{f3@{f3}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{f3()}{f3()}}
+{\footnotesize\ttfamily \label{class_database_a9eae525830e7f0752e2118294c86b191} 
+double Database::\+f3 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_a1d976a263b995908f297e870b40cc4d2}\index{Database@{Database}!f33@{f33}}
+\index{f33@{f33}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{f33()}{f33()}}
+{\footnotesize\ttfamily \label{class_database_a1d976a263b995908f297e870b40cc4d2} 
+double Database::\+f33 (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{int}]{segment}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_adcf4efb29b889e7412fd4551a66b0e9c}\index{Database@{Database}!get\_Task1@{get\_Task1}}
+\index{get\_Task1@{get\_Task1}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{get\_Task1()}{get\_Task1()}}
+{\footnotesize\ttfamily \label{class_database_adcf4efb29b889e7412fd4551a66b0e9c} 
+QString Database::\+get\+\_\+\+Task1 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Генерирует текст и выбирает случайный вариант для Задачи 1 (Графы). 
+
+\Hypertarget{class_database_aa49cd34f08a50375b3407cd70d876c6e}\index{Database@{Database}!get\_Task2@{get\_Task2}}
+\index{get\_Task2@{get\_Task2}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{get\_Task2()}{get\_Task2()}}
+{\footnotesize\ttfamily \label{class_database_aa49cd34f08a50375b3407cd70d876c6e} 
+QString Database::\+get\+\_\+\+Task2 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Генерирует текст и выбирает случайный вариант для Задачи 2 (Метод Симпсона). 
+
+\Hypertarget{class_database_a86b8a52fe3c4994ff23b7da06ab3da4a}\index{Database@{Database}!get\_Task3@{get\_Task3}}
+\index{get\_Task3@{get\_Task3}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{get\_Task3()}{get\_Task3()}}
+{\footnotesize\ttfamily \label{class_database_a86b8a52fe3c4994ff23b7da06ab3da4a} 
+QString Database::\+get\+\_\+\+Task3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Генерирует текст и выбирает случайный вариант для Задачи 3 (Метод Эйлера). 
+
+\Hypertarget{class_database_a507ce4307fe8ef594b4664ce0ddd14ea}\index{Database@{Database}!get\_Task4@{get\_Task4}}
+\index{get\_Task4@{get\_Task4}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{get\_Task4()}{get\_Task4()}}
+{\footnotesize\ttfamily \label{class_database_a507ce4307fe8ef594b4664ce0ddd14ea} 
+QString Database::\+get\+\_\+\+Task4 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Генерирует текст и выбирает случайный вариант для Задачи 4 (Интеграл с разрывом). 
+
+\Hypertarget{class_database_a5a3b028f980a577ea0b809eb92312761}\index{Database@{Database}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_database_a5a3b028f980a577ea0b809eb92312761} 
+\doxymbox{\hyperlink{class_database}{Database}} \texorpdfstring{$\ast$}{*} Database::\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Возвращает единственный экземпляр класса \doxylink{class_database}{Database}. 
+
+\begin{DoxyReturn}{Возвращает}
+Указатель на экземпляр \doxylink{class_database}{Database}. 
+\end{DoxyReturn}
+\Hypertarget{class_database_adeb7c108606dbbf659060a0a4d56a5ce}\index{Database@{Database}!openDatabase@{openDatabase}}
+\index{openDatabase@{openDatabase}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{openDatabase()}{openDatabase()}}
+{\footnotesize\ttfamily \label{class_database_adeb7c108606dbbf659060a0a4d56a5ce} 
+bool Database::\+open\+Database (\begin{DoxyParamCaption}\item[{const QString \&}]{db\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Открывает соединение с файлом базы данных. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em db\+Name} & Имя файла базы данных. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true, если соединение успешно открыто, иначе false. 
+\end{DoxyReturn}
+\Hypertarget{class_database_ad1360facb704fff4380862ec8cb89f3d}\index{Database@{Database}!registerUser@{registerUser}}
+\index{registerUser@{registerUser}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{registerUser()}{registerUser()}}
+{\footnotesize\ttfamily \label{class_database_ad1360facb704fff4380862ec8cb89f3d} 
+QString Database::\+register\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{login}{, }\item[{const QString \&}]{pass}{, }\item[{const QString \&}]{email}{}\end{DoxyParamCaption})}
+
+
+
+Регистрирует нового пользователя с валидацией входных данных. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин (3-\/10 символов, без пробелов, только A-\/Z, a-\/z, 0-\/9, \+\_\+) \\
+\hline
+{\em pass} & Пароль (6-\/10 символов, без пробелов) \\
+\hline
+{\em email} & Адрес электронной почты (должен содержать \textquotesingle{}@\textquotesingle{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Пустая строка в случае успеха, или текст ошибки при провале валидации/\+дублировании логина. 
+\end{DoxyReturn}
+\Hypertarget{class_database_a7cda55b24e3c8a6eddf99493171156ef}\index{Database@{Database}!saveTaskResult@{saveTaskResult}}
+\index{saveTaskResult@{saveTaskResult}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{saveTaskResult()}{saveTaskResult()}}
+{\footnotesize\ttfamily \label{class_database_a7cda55b24e3c8a6eddf99493171156ef} 
+bool Database::\+save\+Task\+Result (\begin{DoxyParamCaption}\item[{const QString \&}]{login}{, }\item[{int}]{task\+Num}{, }\item[{QString}]{result}{}\end{DoxyParamCaption})}
+
+
+
+Сохраняет результат (статус выполнения) конкретной задачи в базу данных. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя. \\
+\hline
+{\em task\+Num} & Номер задачи (1-\/4). \\
+\hline
+{\em result} & Статус выполнения (например, "{}1"{} — решено, "{}0"{} — нет). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true, если обновление прошло успешно, иначе false. 
+\end{DoxyReturn}
+\Hypertarget{class_database_ac0cbb1303ebb33641908660cab107bdd}\index{Database@{Database}!simpsonError@{simpsonError}}
+\index{simpsonError@{simpsonError}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{simpsonError()}{simpsonError()}}
+{\footnotesize\ttfamily \label{class_database_ac0cbb1303ebb33641908660cab107bdd} 
+double Database::\+simpson\+Error (\begin{DoxyParamCaption}\item[{const QVector$<$ double $>$ \&}]{coeffs}{, }\item[{double}]{a}{, }\item[{double}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Вычисляет абсолютную погрешность метода Симпсона для полинома по сравнению с точным интегралом. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em coeffs} & Вектор коэффициентов полинома (от старшей степени к младшей). \\
+\hline
+{\em a} & Левая граница интегрирования. \\
+\hline
+{\em b} & Правая граница интегрирования. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Абсолютная величина погрешности. 
+\end{DoxyReturn}
+\Hypertarget{class_database_adc079c2b6c3a2407ca8d1717b5ec98b2}\index{Database@{Database}!stataUser@{stataUser}}
+\index{stataUser@{stataUser}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{stataUser()}{stataUser()}}
+{\footnotesize\ttfamily \label{class_database_adc079c2b6c3a2407ca8d1717b5ec98b2} 
+QString Database::\+stata\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{login}{}\end{DoxyParamCaption})}
+
+
+
+Возвращает статистику выполнения задач пользователя. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Строка формата "{}\+X/\+4"{}, где X — количество решенных задач, либо сообщение об ошибке. 
+\end{DoxyReturn}
+
+
+Объявления и описания членов классов находятся в файлах:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{database_8h}{database.\+h}}\item 
+\doxymbox{\hyperlink{database_8cpp}{database.\+cpp}}\end{DoxyCompactItemize}

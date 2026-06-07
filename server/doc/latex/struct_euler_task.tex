@@ -1,0 +1,75 @@
+\doxysection{Структура Euler\+Task}
+\hypertarget{struct_euler_task}{}\label{struct_euler_task}\index{EulerTask@{EulerTask}}
+
+
+Структура, описывающая задачу для численного решения ДУ методом Эйлера.  
+
+
+
+
+{\ttfamily \+\#include $<$database.\+h$>$}
+
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{struct_euler_task_a6697a9ef919e73f3f92ecdb082c4961f}{id}}
+\item 
+double \doxymbox{\hyperlink{struct_euler_task_a4c1d29a23f4f7c025e3c57e56c7378f9}{x0}}
+\item 
+double \doxymbox{\hyperlink{struct_euler_task_a6376af7cdd29a695dc105a1425313945}{y0}}
+\item 
+double \doxymbox{\hyperlink{struct_euler_task_a88e1f6bd3e6c49d698966d2150caf950}{h}}
+\item 
+double(\texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_euler_task_ad8e90c9a478b6154c330da6915ce54fd}{f}} )(double, double)
+\item 
+double(\texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_euler_task_a87815499064e7829a55a4341a8cf41d3}{exact}} )(double)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Структура, описывающая задачу для численного решения ДУ методом Эйлера. 
+
+\label{struct_euler_task_doc-variable-members}
+\Hypertarget{struct_euler_task_doc-variable-members}
+\doxysubsection{Данные класса}
+\Hypertarget{struct_euler_task_a87815499064e7829a55a4341a8cf41d3}\index{EulerTask@{EulerTask}!exact@{exact}}
+\index{exact@{exact}!EulerTask@{EulerTask}}
+\doxysubsubsection{\texorpdfstring{exact}{exact}}
+{\footnotesize\ttfamily \label{struct_euler_task_a87815499064e7829a55a4341a8cf41d3} 
+double(\texorpdfstring{$\ast$}{*} Euler\+Task::\+exact) (double)}
+
+Указатель на функцию точного решения для проверки \Hypertarget{struct_euler_task_ad8e90c9a478b6154c330da6915ce54fd}\index{EulerTask@{EulerTask}!f@{f}}
+\index{f@{f}!EulerTask@{EulerTask}}
+\doxysubsubsection{\texorpdfstring{f}{f}}
+{\footnotesize\ttfamily \label{struct_euler_task_ad8e90c9a478b6154c330da6915ce54fd} 
+double(\texorpdfstring{$\ast$}{*} Euler\+Task::\+f) (double, double)}
+
+Указатель на функцию правой части ДУ y\textquotesingle{} = \doxylink{struct_euler_task_ad8e90c9a478b6154c330da6915ce54fd}{f(x, y)} \Hypertarget{struct_euler_task_a88e1f6bd3e6c49d698966d2150caf950}\index{EulerTask@{EulerTask}!h@{h}}
+\index{h@{h}!EulerTask@{EulerTask}}
+\doxysubsubsection{\texorpdfstring{h}{h}}
+{\footnotesize\ttfamily \label{struct_euler_task_a88e1f6bd3e6c49d698966d2150caf950} 
+double Euler\+Task::\+h}
+
+Шаг интегрирования \Hypertarget{struct_euler_task_a6697a9ef919e73f3f92ecdb082c4961f}\index{EulerTask@{EulerTask}!id@{id}}
+\index{id@{id}!EulerTask@{EulerTask}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily \label{struct_euler_task_a6697a9ef919e73f3f92ecdb082c4961f} 
+int Euler\+Task::\+id}
+
+Идентификатор задачи \Hypertarget{struct_euler_task_a4c1d29a23f4f7c025e3c57e56c7378f9}\index{EulerTask@{EulerTask}!x0@{x0}}
+\index{x0@{x0}!EulerTask@{EulerTask}}
+\doxysubsubsection{\texorpdfstring{x0}{x0}}
+{\footnotesize\ttfamily \label{struct_euler_task_a4c1d29a23f4f7c025e3c57e56c7378f9} 
+double Euler\+Task::\+x0}
+
+Начальная точка x \Hypertarget{struct_euler_task_a6376af7cdd29a695dc105a1425313945}\index{EulerTask@{EulerTask}!y0@{y0}}
+\index{y0@{y0}!EulerTask@{EulerTask}}
+\doxysubsubsection{\texorpdfstring{y0}{y0}}
+{\footnotesize\ttfamily \label{struct_euler_task_a6376af7cdd29a695dc105a1425313945} 
+double Euler\+Task::\+y0}
+
+Начальное условие y(x0) 
+
+Объявления и описания членов структуры находятся в файле:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{database_8h}{database.\+h}}\end{DoxyCompactItemize}
